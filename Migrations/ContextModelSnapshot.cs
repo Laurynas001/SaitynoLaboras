@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SaitynoLaboras.Data;
 
 namespace SaitynoLaboras.Migrations
 {
-    [DbContext(typeof(GasStationContext))]
-    [Migration("20200923104727_PriceAddition")]
-    partial class PriceAddition
+    [DbContext(typeof(Context))]
+    partial class ContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,27 +54,22 @@ namespace SaitynoLaboras.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("A95Price")
-                        .HasColumnType("float")
-                        .HasMaxLength(50);
+                        .HasColumnType("float");
 
                     b.Property<double>("A98Price")
-                        .HasColumnType("float")
-                        .HasMaxLength(50);
+                        .HasColumnType("float");
 
                     b.Property<double>("DPrice")
-                        .HasColumnType("float")
-                        .HasMaxLength(50);
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<double>("DzPrice")
-                        .HasColumnType("float")
-                        .HasMaxLength(50);
+                        .HasColumnType("float");
 
                     b.Property<double>("GasPrice")
-                        .HasColumnType("float")
-                        .HasMaxLength(50);
+                        .HasColumnType("float");
 
                     b.Property<int>("GasStationId")
                         .HasColumnType("int");
@@ -85,7 +78,7 @@ namespace SaitynoLaboras.Migrations
 
                     b.HasIndex("GasStationId");
 
-                    b.ToTable("Price");
+                    b.ToTable("Prices");
                 });
 
             modelBuilder.Entity("SaitynoLaboras.Models.Price", b =>

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace SaitynoLaboras.Data
 {
-    public class SqlRepository : IRepository
+    public class GasStationSqlRepository : IGasStationRepository
     {
-        private readonly GasStationContext _context;
+        private readonly Context _context;
 
-        public SqlRepository(GasStationContext context)
+        public GasStationSqlRepository(Context context)
         {
             _context = context;
         }
@@ -40,6 +40,7 @@ namespace SaitynoLaboras.Data
             var gasStations = _context.GasStations.Where(a => a.Name == gasStation.Name && a.Latitude == gasStation.Latitude && a.Longtitude == gasStation.Longtitude).ToList();
             if (gasStations.Count == 0)
             {
+                gasStation.Prices = new List<Price>();
                 _context.GasStations.Add(gasStation);
                 _context.SaveChanges();
                 int id = _context.GasStations.Max(a => a.Id);

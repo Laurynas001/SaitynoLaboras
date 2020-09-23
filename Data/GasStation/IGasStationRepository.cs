@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SaitynoLaboras.Data
 {
-    public interface IRepository
+    public interface IGasStationRepository
     {
         IEnumerable<GasStation> GetAllGasStations();
         GasStation GetGasStationById(int id);

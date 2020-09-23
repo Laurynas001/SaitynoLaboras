@@ -27,9 +27,13 @@ namespace SaitynoLaboras
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<GasStationContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
+            services.AddDbContext<Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
             services.AddControllers();
-            services.AddScoped<IRepository, SqlRepository>();
+            services.AddScoped<IGasStationRepository, GasStationSqlRepository>();
+            services.AddScoped<IPriceRepository, PriceSqlRepository>();
+            services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

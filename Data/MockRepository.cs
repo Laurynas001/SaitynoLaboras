@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SaitynoLaboras.Data
 {
-    public class MockRepository : IRepository
+    public class MockRepository : IGasStationRepository
     {
         List<GasStation> gasStations = new List<GasStation>
             {
@@ -40,7 +40,7 @@ namespace SaitynoLaboras.Data
             throw new NotImplementedException();
         }
 
-        int IRepository.PostGasStation(GasStation gasStation)
+        int IGasStationRepository.PostGasStation(GasStation gasStation)
         {
             throw new NotImplementedException();
         }

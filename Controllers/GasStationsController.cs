@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace SaitynoLaboras.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class GasStationsController : ControllerBase
     {
-        private readonly IRepository _repository;
+        private readonly IGasStationRepository _repository;
 
-        public GasStationsController(IRepository repository)
+        public GasStationsController(IGasStationRepository repository)
         {
             _repository = repository;
         }
@@ -45,7 +45,7 @@ namespace SaitynoLaboras.Controllers
             int id = _repository.PostGasStation(gasStation);
             if (id != 400)  
             {
-                return Created(new Uri("http://http://localhost:5000/api/GasStations/" + id), gasStation);
+                return Created(new Uri("http://http://localhost:5000/GasStations/" + id), gasStation);
             }
             else
             {
@@ -59,7 +59,7 @@ namespace SaitynoLaboras.Controllers
             var gasStation1 = _repository.GetGasStationById(id);
             if (gasStation1 == null)
             {
-                return NotFound();
+                return NoContent();
             }
             else
             {
