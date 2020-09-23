@@ -19,5 +19,7 @@ namespace SaitynoLaboras.Models
         [Required]
         [MaxLength(50)]
         public string Latitude { get; set; }
+        [Required]
+        public List<Price> Prices { get; set; }
     }
 }

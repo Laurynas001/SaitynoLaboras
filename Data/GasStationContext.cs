@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using SaitynoLaboras.Models;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,6 @@ namespace SaitynoLaboras.Data
         }
 
         public DbSet<GasStation> GasStations { get; set; }
+        public DbSet<Price> Price { get; set; }
     }
 }

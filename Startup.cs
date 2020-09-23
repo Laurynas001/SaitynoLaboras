@@ -29,7 +29,7 @@ namespace SaitynoLaboras
         {
             services.AddDbContext<GasStationContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
             services.AddControllers();
-            services.AddScoped<IRepository, MockRepository>();
+            services.AddScoped<IRepository, SqlRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using SaitynoLaboras.Data;
 using SaitynoLaboras.Models;
 using System;
@@ -29,17 +30,58 @@ namespace SaitynoLaboras.Controllers
         public ActionResult<GasStation> GetGasStationById(int id)
         {
             var gasStation = _repository.GetGasStationById(id);
-            if(id != 0)
+            if (gasStation == null)
             {
                 return NotFound();
             }
-            return Ok(gasStation);
+            else
+            {
+                return Ok(gasStation);
+            }
         }
         [HttpPost]
         public ActionResult<GasStation> PostGasStation(GasStation gasStation)
         {
-            _repository.PostGasStation(gasStation);
-            return Ok();
+            int id = _repository.PostGasStation(gasStation);
+            if (id != 400)  
+            {
+                return Created(new Uri("http://http://localhost:5000/api/GasStations/" + id), gasStation);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<GasStation> PutGasStation(int id, GasStation gasStation)
+        {
+            var gasStation1 = _repository.GetGasStationById(id);
+            if (gasStation1 == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _repository.PutGasStation(id, gasStation);
+                gasStation.Id = id;
+                return Ok(gasStation);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<GasStation> DeleteGasStation(int id)
+        {
+            var gasStation = _repository.GetGasStationById(id);
+            if (gasStation == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _repository.DeleteGasStation(id);
+                return Ok(gasStation);
+            }
         }
     }
 }

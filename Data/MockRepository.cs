@@ -14,6 +14,12 @@ namespace SaitynoLaboras.Data
                 new GasStation { Id = 1, Latitude = "57.675061", Longtitude = "104.696815", Name = "Viada" },
                 new GasStation { Id = 2, Latitude = "87.675061", Longtitude = "46.696815", Name = "Orlen" }
             };
+
+        public void DeleteGasStation(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<GasStation> GetAllGasStations()
         {
             return gasStations;
@@ -27,6 +33,16 @@ namespace SaitynoLaboras.Data
         public void PostGasStation(GasStation gasStation)
         {
             gasStations.Add(gasStation);
+        }
+
+        public void PutGasStation(int id, GasStation gasStation)
+        {
+            throw new NotImplementedException();
+        }
+
+        int IRepository.PostGasStation(GasStation gasStation)
+        {
+            throw new NotImplementedException();
         }
     }
 }
