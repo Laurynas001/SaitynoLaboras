@@ -31,6 +31,8 @@ namespace SaitynoLaboras
             services.AddControllers();
             services.AddScoped<IGasStationRepository, GasStationSqlRepository>();
             services.AddScoped<IPriceRepository, PriceSqlRepository>();
+            services.AddScoped<IReminderRepository, ReminderSqlRepository>();
+            services.AddScoped<IUserRepository, UserSqlRepository>();
             services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );

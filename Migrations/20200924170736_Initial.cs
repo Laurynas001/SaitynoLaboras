@@ -14,12 +14,29 @@ namespace SaitynoLaboras.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
+                    City = table.Column<string>(maxLength: 50, nullable: false),
+                    Address = table.Column<string>(maxLength: 50, nullable: false),
                     Longtitude = table.Column<string>(maxLength: 50, nullable: false),
                     Latitude = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_GasStations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Username = table.Column<string>(maxLength: 50, nullable: false),
+                    Password = table.Column<string>(maxLength: 50, nullable: false),
+                    Email = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,10 +64,38 @@ namespace SaitynoLaboras.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Reminders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GasStationName = table.Column<string>(maxLength: 50, nullable: false),
+                    CreationDate = table.Column<DateTime>(nullable: false),
+                    ValidUntil = table.Column<DateTime>(nullable: false),
+                    WantedPrice = table.Column<double>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reminders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reminders_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Prices_GasStationId",
                 table: "Prices",
                 column: "GasStationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reminders_UserId",
+                table: "Reminders",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -59,7 +104,13 @@ namespace SaitynoLaboras.Migrations
                 name: "Prices");
 
             migrationBuilder.DropTable(
+                name: "Reminders");
+
+            migrationBuilder.DropTable(
                 name: "GasStations");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

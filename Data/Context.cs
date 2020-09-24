@@ -20,9 +20,17 @@ namespace SaitynoLaboras.Data
             modelBuilder.Entity<Price>()
                 .HasOne(p => p.GasStation)
                 .WithMany(b => b.Prices);
+
+            modelBuilder.Entity<Reminder>()
+               .HasOne(p => p.User)
+               .WithMany(b => b.Reminders);
+
         }
 
         public DbSet<GasStation> GasStations { get; set; }
         public DbSet<Price> Prices { get; set; }
+        public DbSet<Reminder> Reminders { get; set; }
+        public DbSet<User> Users { get; set; }
+
     }
 }

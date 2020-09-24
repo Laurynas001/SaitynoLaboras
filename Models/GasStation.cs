@@ -15,6 +15,12 @@ namespace SaitynoLaboras.Models
         public string Name { get; set; }
         [Required]
         [MaxLength(50)]
+        public string City { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Address { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string Longtitude { get; set; }
         [Required]
         [MaxLength(50)]

@@ -60,4 +60,4 @@ D:\C_Extend\Desktop\SaitynoLaboras\obj\Debug\netcoreapp3.1\SaitynoLaboras.MvcApp
 D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-D:\C_Extend\Desktop\SaitynoLaboras\obj\Debug\netcoreapp3.1\SaitynoLaboras.csprojAssemblyReference.cache
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
