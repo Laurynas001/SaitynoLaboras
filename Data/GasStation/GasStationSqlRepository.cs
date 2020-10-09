@@ -35,6 +35,32 @@ namespace SaitynoLaboras.Data
             return _context.GasStations.FirstOrDefault(a => a.Id == id);
         }
 
+        public void PatchGasStation(int id, GasStation gasStation)
+        {
+            var gasStationGet = _context.GasStations.FirstOrDefault(a => a.Id == id);
+            if (gasStation.Latitude != "")
+            {
+                gasStationGet.Latitude = gasStation.Latitude;
+            }
+            if (gasStation.Longtitude != "")
+            {
+                gasStationGet.Longtitude = gasStation.Longtitude;
+            }
+            if (gasStation.Name != "")
+            {
+                gasStationGet.Name = gasStation.Name;
+            }
+            if (gasStation.City != "")
+            {
+                gasStationGet.City = gasStation.City;
+            }
+            if (gasStation.Address != "")
+            {
+                gasStationGet.Address = gasStation.Address;
+            }
+            _context.SaveChanges();
+        }
+
         public int PostGasStation(GasStation gasStation)
         {
             var gasStations = _context.GasStations.Where(a => a.Name == gasStation.Name && a.Latitude == gasStation.Latitude && a.Longtitude == gasStation.Longtitude).ToList();
@@ -48,7 +74,7 @@ namespace SaitynoLaboras.Data
             }
             else
             {
-                return 400;
+                return 409;
             }
 
         }

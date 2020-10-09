@@ -43,14 +43,20 @@ namespace SaitynoLaboras.Controllers
         public ActionResult<GasStation> PostGasStation(GasStation gasStation)
         {
             int id = _repository.PostGasStation(gasStation);
-            if (id != 400)  
+            if (id != 409)  
             {
                 return Created(new Uri("http://http://localhost:5000/GasStations/" + id), gasStation);
             }
             else
             {
-                return BadRequest();
+                return Conflict();
             }
+        }
+
+        [HttpPost("{id}")]
+        public ActionResult<GasStation> PostGasStation(int id, GasStation gasStation)
+        {
+                return NotFound();
         }
 
         [HttpPut("{id}")]
@@ -59,7 +65,11 @@ namespace SaitynoLaboras.Controllers
             var gasStation1 = _repository.GetGasStationById(id);
             if (gasStation1 == null)
             {
-                return NoContent();
+                return NotFound();
+            }
+            else if (gasStation.Latitude == "" || gasStation.Longtitude == "" || gasStation.Name == "" || gasStation.Address == "" || gasStation.City == "")
+            {
+                return BadRequest();
             }
             else
             {
@@ -67,6 +77,38 @@ namespace SaitynoLaboras.Controllers
                 gasStation.Id = id;
                 return Ok(gasStation);
             }
+        }
+
+        [HttpPatch]
+        public ActionResult<GasStation> PatchGasStation()
+        {
+            return BadRequest();
+        }
+
+        [HttpPatch("{id}")]
+        public ActionResult<GasStation> PatchGasStation(int id, GasStation gasStation)
+        {
+            var gasStation1 = _repository.GetGasStationById(id);
+            if (gasStation1 == null)
+            {
+                return NotFound();
+            }
+            else if (gasStation.Latitude == "" && gasStation.Longtitude == "" && gasStation.Name == "" && gasStation.Address == "" && gasStation.City == "")
+            {
+                return BadRequest();
+            }
+            else
+            {
+                _repository.PatchGasStation(id, gasStation);
+                gasStation1 = _repository.GetGasStationById(id);
+                return Ok(gasStation1);
+            }
+        }
+
+        [HttpPut]
+        public ActionResult<GasStation> PutGasStation()
+        {
+            return BadRequest();
         }
 
         [HttpDelete("{id}")]
@@ -82,6 +124,12 @@ namespace SaitynoLaboras.Controllers
                 _repository.DeleteGasStation(id);
                 return Ok(gasStation);
             }
+        }
+
+        [HttpDelete]
+        public ActionResult<GasStation> DeleteGasStation()
+        {
+            return BadRequest();
         }
     }
 }

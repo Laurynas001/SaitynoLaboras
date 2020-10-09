@@ -41,9 +41,9 @@ namespace SaitynoLaboras.Data
             price.Date = DateTime.Now;
             price.GasStationId = GSid;
             var gasStation = _context.GasStations.FirstOrDefault(a => a.Id == GSid);
-            price.GasStation = gasStation;
-            gasStation.Prices = new List<Price>();
-            gasStation.Prices.Add(price);
+            //price.GasStation = gasStation;
+            _context.Prices.Add(price);
+            //gasStation.Prices.Add(price);
             _context.SaveChanges();
         }
 

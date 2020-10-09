@@ -29,6 +29,6 @@ namespace SaitynoLaboras.Models
         public DateTime Date { get; set; }
         [Required]
         public int GasStationId { get; set; }
-        public GasStation GasStation { get; set; }
+        //public GasStation GasStation { get; set; }
     }
 }

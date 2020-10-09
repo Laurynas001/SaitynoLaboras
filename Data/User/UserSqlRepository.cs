@@ -41,7 +41,6 @@ namespace SaitynoLaboras.Data
             }
             else
             {
-                user.Reminders = new List<Reminder>();
                 _context.Users.Add(user);
                 _context.SaveChanges();
                 int id = _context.GasStations.Max(a => a.Id);

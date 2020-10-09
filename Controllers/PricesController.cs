@@ -32,6 +32,12 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [HttpPost("{GSid}/Prices/{Pid}")]
+        public ActionResult<Price> PostPrice(int GSid, int Pid, Price price)
+        {
+            return NotFound();
+        }
+
         [HttpGet("{GSid}/Prices")]
         public ActionResult<IEnumerable<Price>> GetAllPrices(int GSid)
         {
@@ -59,6 +65,8 @@ namespace SaitynoLaboras.Controllers
                 return Ok(price);
             }
         }
+
+
         [HttpPut("{GSid}/Prices/{Pid}")]
         public ActionResult<Price> PutPrice(int GSid, int Pid, Price price)
         {

@@ -17,14 +17,17 @@ namespace SaitynoLaboras.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Price>()
-                .HasOne(p => p.GasStation)
-                .WithMany(b => b.Prices);
+            //modelBuilder.Entity<Price>()
+            //    .HasOne(p => p.GasStation)
+            //    .WithMany(b => b.Prices);
 
-            modelBuilder.Entity<Reminder>()
-               .HasOne(p => p.User)
-               .WithMany(b => b.Reminders);
+            //modelBuilder.Entity<Reminder>()
+            //   .HasOne(p => p.User)
+            //   .WithMany(b => b.Reminders);
 
+            //modelBuilder.Entity<GasStation>()
+            //    .HasOne(p => p.GasStation)
+            //    .WithMany(b => b.Prices);
         }
 
         public DbSet<GasStation> GasStations { get; set; }

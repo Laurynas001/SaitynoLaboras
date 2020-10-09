@@ -30,6 +30,11 @@ namespace SaitynoLaboras.Data
             return gasStations[id];
         }
 
+        public void PatchGasStation(int id, GasStation gasStation)
+        {
+            throw new NotImplementedException();
+        }
+
         public void PostGasStation(GasStation gasStation)
         {
             gasStations.Add(gasStation);
