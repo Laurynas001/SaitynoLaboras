@@ -23,8 +23,16 @@ namespace SaitynoLaboras.Data
 
         public IEnumerable<Reminder> GetAllReminders(int Uid)
         {
-            var reminders = _context.Reminders.Where(a => a.UserId == Uid);
-            return reminders;
+            if (Uid != -1)
+            {
+                var reminders = _context.Reminders.Where(a => a.UserId == Uid);
+                return reminders;
+            }
+            else
+            {
+                var reminders = _context.Reminders.ToList();
+                return reminders;
+            }
         }
 
         public Reminder GetReminderById(int Uid, int Rid)
@@ -33,13 +41,43 @@ namespace SaitynoLaboras.Data
             return reminder;
         }
 
-        public void PostReminder(int Uid, Reminder reminder)
+        public int PostReminder(int Uid, Reminder reminder)
         {
-            reminder.CreationDate = DateTime.Now;
-            reminder.ValidUntil = DateTime.Now.AddDays(30);
-            var user = _context.Users.FirstOrDefault(a => a.Id == Uid);
-            reminder.User = user;
-            user.Reminders.Add(reminder);
+            var reminders = _context.Reminders.Where(a => a.UserId == Uid && a.GasStationName == reminder.GasStationName && a.GasType == reminder.GasType && a.WantedPrice == reminder.WantedPrice).ToList();
+            if (reminders.Count == 0)
+            {
+                reminder.CreationDate = DateTime.Now;
+                reminder.ValidUntil = DateTime.Now.AddDays(30);
+                var user = _context.Users.FirstOrDefault(a => a.Id == Uid);
+                reminder.UserId = Uid;
+                //reminder.User = user;
+                //user.Reminders.Add(reminder);
+                _context.Reminders.Add(reminder);
+                int id = _context.Reminders.Max(a => a.Id);
+                _context.SaveChanges();
+                return id;
+            }
+            else
+            {
+                return 409;
+            }
+        }
+
+        public void PatchReminder(int Uid, int Rid, Reminder reminder)
+        {
+            var reminderGet = _context.Reminders.FirstOrDefault(a => a.Id == Rid);
+            if (reminder.WantedPrice != 0)
+            {
+                reminderGet.WantedPrice = reminder.WantedPrice;
+            }
+            if (reminder.GasType != null)
+            {
+                reminderGet.GasType = reminder.GasType;
+            }
+            if (reminder.GasStationName != null)
+            {
+                reminderGet.GasStationName = reminder.GasStationName;
+            }
             _context.SaveChanges();
         }
 

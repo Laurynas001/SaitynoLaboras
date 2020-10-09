@@ -27,34 +27,44 @@ namespace SaitynoLaboras.Data
 
         public IEnumerable<GasStation> GetAllGasStations()
         {
-            return _context.GasStations.ToList();
+            var gasStations = _context.GasStations.ToList();
+            foreach (var gasStation in gasStations)
+            {
+                gasStation.Prices = _context.Prices.Where(a => a.GasStationId == gasStation.Id).ToList();
+            }
+            return gasStations;
         }
 
         public GasStation GetGasStationById(int id)
         {
-            return _context.GasStations.FirstOrDefault(a => a.Id == id);
+            var gasStation = _context.GasStations.FirstOrDefault(a => a.Id == id);
+            if (gasStation.Name != null)
+            {
+                gasStation.Prices = _context.Prices.Where(a => a.GasStationId == gasStation.Id).ToList();
+            }
+            return gasStation;
         }
 
         public void PatchGasStation(int id, GasStation gasStation)
         {
             var gasStationGet = _context.GasStations.FirstOrDefault(a => a.Id == id);
-            if (gasStation.Latitude != "")
+            if (gasStation.Latitude != null)
             {
                 gasStationGet.Latitude = gasStation.Latitude;
             }
-            if (gasStation.Longtitude != "")
+            if (gasStation.Longtitude != null)
             {
                 gasStationGet.Longtitude = gasStation.Longtitude;
             }
-            if (gasStation.Name != "")
+            if (gasStation.Name != null)
             {
                 gasStationGet.Name = gasStation.Name;
             }
-            if (gasStation.City != "")
+            if (gasStation.City != null)
             {
                 gasStationGet.City = gasStation.City;
             }
-            if (gasStation.Address != "")
+            if (gasStation.Address != null)
             {
                 gasStationGet.Address = gasStation.Address;
             }

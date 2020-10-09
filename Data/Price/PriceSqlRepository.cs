@@ -26,8 +26,16 @@ namespace SaitynoLaboras.Data
 
         public IEnumerable<Price> GetAllPrices(int GSid)
         {
-            var prices = _context.Prices.Where(a => a.GasStationId == GSid);
-            return prices;
+            if (GSid != -1)
+            {
+                var prices = _context.Prices.Where(a => a.GasStationId == GSid);
+                return prices;
+            }
+            else
+            {
+                var prices = _context.Prices.ToList();
+                return prices;
+            }
         }
 
         public Price GetPriceById(int GSid, int Pid)
@@ -36,15 +44,56 @@ namespace SaitynoLaboras.Data
             return price;
         }
 
-        public void PostPrice(int GSid, Price price)
+        public void PatchPrice(int GSid, int Pid, Price price)
         {
-            price.Date = DateTime.Now;
-            price.GasStationId = GSid;
-            var gasStation = _context.GasStations.FirstOrDefault(a => a.Id == GSid);
-            //price.GasStation = gasStation;
-            _context.Prices.Add(price);
-            //gasStation.Prices.Add(price);
+            var priceGet = _context.Prices.FirstOrDefault(a => a.Id == Pid);
+            if (price.A95Price != 0)
+            {
+                priceGet.A95Price = price.A95Price;
+            }
+            if (price.A98Price != 0)
+            {
+                priceGet.A98Price = price.A98Price;
+            }
+            if (price.DPrice != 0)
+            {
+                priceGet.DPrice = price.DPrice;
+            }
+            if (price.DzPrice != 0)
+            {
+                priceGet.DzPrice = price.DzPrice;
+            }
+            if (price.GasPrice != 0)
+            {
+                priceGet.GasPrice = price.GasPrice;
+            }
+            if (price.Date != null)
+            {
+                priceGet.Date = price.Date;
+            }
             _context.SaveChanges();
+        }
+
+        public int PostPrice(int GSid, Price price)
+        {
+            var prices = _context.Prices.Where(a => a.Date == price.Date).ToList();
+            if (prices.Count == 0)
+            {
+                price.Date = DateTime.Now;
+                price.GasStationId = GSid;
+                var gasStation = _context.GasStations.FirstOrDefault(a => a.Id == GSid);
+                //price.GasStation = gasStation;
+                _context.Prices.Add(price);
+                int id = _context.Prices.Max(a => a.Id);
+                //gasStation.Prices.Add(price);
+                _context.SaveChanges();
+                return id;
+            }
+            else
+            {
+                return 409;
+            }
+
         }
 
         public void PutPrice(int GSid, int Pid, Price price)

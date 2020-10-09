@@ -11,18 +11,13 @@ namespace SaitynoLaboras.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
         [MaxLength(50)]
         public string GasStationName { get; set; }
-        [Required]
+        public string GasType { get; set; }
         public DateTime CreationDate { get; set; }
-        [Required]
         public DateTime ValidUntil { get; set; }
-        [Required]
-        [Range(0.1, 10)]
         public double WantedPrice { get; set; }
-        [Required]
         public int UserId { get; set; }
-        public User User { get; set; }
+        //public User User { get; set; }
     }
 }

@@ -10,14 +10,11 @@ namespace SaitynoLaboras.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        [MaxLength(50)]
+
         public string Username { get; set; }
-        [Required]
-        [MaxLength(50)]
+      
         public string Password { get; set; }
-        [Required]
-        [MaxLength(50)]
+        
         public string Email { get; set; }
         public List<Reminder> Reminders { get; set; }
     }

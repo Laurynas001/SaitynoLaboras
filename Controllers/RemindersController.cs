@@ -18,6 +18,21 @@ namespace SaitynoLaboras.Controllers
             _repository = repository;
         }
 
+        [HttpGet("/[controller]")]
+        public ActionResult<IEnumerable<Reminder>> GetAllReminders()
+        {
+            int id = -1;
+            var reminders = _repository.GetAllReminders(id).ToList();
+            if (reminders.Count == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(reminders);
+            }
+        }
+
         [HttpGet("{Uid}/[controller]")]
         public ActionResult<IEnumerable<Reminder>> GetAllReminders(int Uid)
         {
@@ -49,15 +64,21 @@ namespace SaitynoLaboras.Controllers
         [HttpPost("{Uid}/[controller]")]
         public ActionResult<Reminder> PostReminder(int Uid, Reminder reminder)
         {
-            if (reminder != null)
+            int id = _repository.PostReminder(Uid, reminder);
+            if (id != 409)
             {
-                _repository.PostReminder(Uid, reminder);
-                return CreatedAtRoute(new Uri("http://http://localhost:5000/Users/" + Uid + "/Reminders"), reminder);
+                return CreatedAtRoute(new Uri("https://saitynolaboras20201008165604.azurewebsites.net/Users/" + Uid + "/Reminders" + id), reminder);
             }
             else
             {
-                return BadRequest();
+                return Conflict();
             }
+        }
+
+        [HttpPost("{Uid}/[controller]/{Rid}")]
+        public ActionResult<Reminder> PostReminder(int Uid, int Rid, Reminder reminder)
+        {
+            return NotFound();
         }
 
         [HttpPut("{Uid}/[controller]/{Rid}")]
@@ -66,14 +87,52 @@ namespace SaitynoLaboras.Controllers
             var foundReminder = _repository.GetReminderById(Uid, Rid);
             if (foundReminder == null)
             {
-                return NoContent();
+                return NotFound();
+            }
+            else if (reminder.WantedPrice == 0 || reminder.GasStationName == null || reminder.GasType == null)
+            {
+                return BadRequest();
             }
             else
             {
                 _repository.PutReminder(Uid, Rid, reminder);
-                return Ok();
+                reminder.Id = Rid;
+                return Ok(reminder);
             }
         }
+
+
+        [HttpPut("{Uid}/[controller]")]
+        public ActionResult<Price> PutPrice(int Uid, Reminder reminder)
+        {
+            return BadRequest();
+        }
+
+        [HttpPatch("{Uid}/[controller]/{Rid}")]
+        public ActionResult<Price> PatchPrice(int Uid, int Rid, Reminder reminder)
+        {
+            var foundReminder = _repository.GetReminderById(Uid, Rid);
+            if (foundReminder == null)
+            {
+                return NotFound();
+            }
+            else if (reminder.WantedPrice == 0 && reminder.GasStationName == null && reminder.GasType == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                _repository.PatchReminder(Uid, Rid, reminder);
+                return Ok(foundReminder);
+            }
+        }
+
+        [HttpPatch("{Uid}/[controller]")]
+        public ActionResult<Price> PatchPrice(int Uid, Reminder reminder)
+        {
+            return BadRequest();
+        }
+
 
         [HttpDelete("{Uid}/[controller]/{Rid}")]
         public ActionResult<Price> DeleteReminder(int Uid, int Rid)
@@ -88,6 +147,12 @@ namespace SaitynoLaboras.Controllers
                 _repository.DeleteReminder(Uid, Rid);
                 return Ok(reminder);
             }
+        }
+
+        [HttpDelete("{Uid}/[controller]")]
+        public ActionResult<Price> DeleteReminder(int Uid)
+        {
+            return BadRequest();
         }
 
     }

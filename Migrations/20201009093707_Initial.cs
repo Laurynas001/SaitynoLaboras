@@ -13,11 +13,11 @@ namespace SaitynoLaboras.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    City = table.Column<string>(maxLength: 50, nullable: false),
-                    Address = table.Column<string>(maxLength: 50, nullable: false),
-                    Longtitude = table.Column<string>(maxLength: 50, nullable: false),
-                    Latitude = table.Column<string>(maxLength: 50, nullable: false)
+                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    City = table.Column<string>(maxLength: 50, nullable: true),
+                    Address = table.Column<string>(maxLength: 50, nullable: true),
+                    Longtitude = table.Column<string>(maxLength: 50, nullable: true),
+                    Latitude = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,9 +30,9 @@ namespace SaitynoLaboras.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(maxLength: 50, nullable: false),
-                    Password = table.Column<string>(maxLength: 50, nullable: false),
-                    Email = table.Column<string>(maxLength: 50, nullable: false)
+                    Username = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,7 +70,8 @@ namespace SaitynoLaboras.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GasStationName = table.Column<string>(maxLength: 50, nullable: false),
+                    GasStationName = table.Column<string>(maxLength: 50, nullable: true),
+                    GasType = table.Column<string>(nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: false),
                     ValidUntil = table.Column<DateTime>(nullable: false),
                     WantedPrice = table.Column<double>(nullable: false),

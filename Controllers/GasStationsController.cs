@@ -30,7 +30,7 @@ namespace SaitynoLaboras.Controllers
         public ActionResult<GasStation> GetGasStationById(int id)
         {
             var gasStation = _repository.GetGasStationById(id);
-            if (gasStation == null)
+            if (gasStation.Name == null)
             {
                 return NotFound();
             }
@@ -45,7 +45,7 @@ namespace SaitynoLaboras.Controllers
             int id = _repository.PostGasStation(gasStation);
             if (id != 409)  
             {
-                return Created(new Uri("http://http://localhost:5000/GasStations/" + id), gasStation);
+                return Created(new Uri("https://saitynolaboras20201008165604.azurewebsites.net/GasStations/" + id), gasStation);
             }
             else
             {
@@ -67,7 +67,7 @@ namespace SaitynoLaboras.Controllers
             {
                 return NotFound();
             }
-            else if (gasStation.Latitude == "" || gasStation.Longtitude == "" || gasStation.Name == "" || gasStation.Address == "" || gasStation.City == "")
+            else if (gasStation.Latitude == null || gasStation.Longtitude == null || gasStation.Name == null || gasStation.Address == null || gasStation.City == null)
             {
                 return BadRequest();
             }
@@ -93,7 +93,7 @@ namespace SaitynoLaboras.Controllers
             {
                 return NotFound();
             }
-            else if (gasStation.Latitude == "" && gasStation.Longtitude == "" && gasStation.Name == "" && gasStation.Address == "" && gasStation.City == "")
+            else if (gasStation.Latitude == null && gasStation.Longtitude == null && gasStation.Name == null && gasStation.Address == null && gasStation.City == null)
             {
                 return BadRequest();
             }

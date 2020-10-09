@@ -27,27 +27,22 @@ namespace SaitynoLaboras.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Latitude")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Longtitude")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -102,9 +97,11 @@ namespace SaitynoLaboras.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("GasStationName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<string>("GasType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -130,19 +127,13 @@ namespace SaitynoLaboras.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -151,7 +142,7 @@ namespace SaitynoLaboras.Migrations
 
             modelBuilder.Entity("SaitynoLaboras.Models.Price", b =>
                 {
-                    b.HasOne("SaitynoLaboras.Models.GasStation", "GasStation")
+                    b.HasOne("SaitynoLaboras.Models.GasStation", null)
                         .WithMany("Prices")
                         .HasForeignKey("GasStationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -160,7 +151,7 @@ namespace SaitynoLaboras.Migrations
 
             modelBuilder.Entity("SaitynoLaboras.Models.Reminder", b =>
                 {
-                    b.HasOne("SaitynoLaboras.Models.User", "User")
+                    b.HasOne("SaitynoLaboras.Models.User", null)
                         .WithMany("Reminders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

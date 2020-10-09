@@ -23,21 +23,44 @@ namespace SaitynoLaboras.Data
         public IEnumerable<User> GetAllUsers()
         {
             var users = _context.Users.ToList();
+            foreach (var user in users)
+            {
+                user.Reminders = _context.Reminders.Where(a => a.UserId == user.Id).ToList();
+            }
             return users;
         }
 
         public User GetUserById(int id)
         {
             var user = _context.Users.FirstOrDefault(a => a.Id == id);
+            user.Reminders = _context.Reminders.Where(a => a.UserId == user.Id).ToList();
             return user;
+        }
+
+        public void PatchUser(int id, User user)
+        {
+            var userGet = _context.Users.FirstOrDefault(a => a.Id == id);
+            if (user.Username != null)
+            {
+                userGet.Username = user.Username;
+            }
+            if (user.Password != null)
+            {
+                userGet.Password = user.Password;
+            }
+            if (user.Email != null)
+            {
+                userGet.Email = user.Email;
+            }
+            _context.SaveChanges();
         }
 
         public int PostUser(User user)
         {
-            var users = _context.Users.Where(a => a.Username == user.Username && a.Password == user.Password && a.Email == user.Password).ToList();
+            var users = _context.Users.Where(a => a.Username == user.Username && a.Password == user.Password && a.Email == user.Email).ToList();
             if (users.Count > 0)
             {
-                return 400;
+                return 409;
             }
             else
             {

@@ -49,22 +49,60 @@ namespace SaitynoLaboras.Controllers
         public ActionResult<User> PostUser(User user)
         {
             int id =  _repository.PostUser(user);
-            if (id == 400)
+            if (id == 409)
+            {
+                return Conflict();
+            }
+            else
+            {
+                return Created(new Uri("https://saitynolaboras20201008165604.azurewebsites.net/Users/" + id), user);
+            }
+        }
+
+        [HttpPost("{id}")]
+        public ActionResult<User> PostUser(int id, User user)
+        {
+            return NotFound();
+        }
+
+        [HttpPatch("{id}")]
+        public ActionResult<User> PatchUser(int id, User user)
+        {
+            var user1 = _repository.GetUserById(id);
+            if (user1 == null)
+            {
+                return NotFound();
+            }
+            else if (user.Email == null && user.Password == null && user.Username == null)
             {
                 return BadRequest();
             }
             else
             {
-                return Created(new Uri("http://http://localhost:5000/Users/" + id), user);
+                _repository.PatchUser(id, user);
+                user1.Id = id;
+                return Ok(user1);
             }
         }
+
+        [HttpPatch]
+        public ActionResult<User> PatchUser(User user)
+        {
+            return BadRequest();
+        }
+
+
         [HttpPut("{id}")]
         public ActionResult<User> PutUser(int id, User user)
         {
             var user1 = _repository.GetUserById(id);
             if (user1 == null)
             {
-                return NoContent();
+                return NotFound();
+            }
+            else if (user.Email == null || user.Password == null || user.Username == null)
+            {
+                return BadRequest();
             }
             else
             {
@@ -72,6 +110,12 @@ namespace SaitynoLaboras.Controllers
                 user.Id = id;
                 return Ok(user);
             }
+        }
+
+        [HttpPut]
+        public ActionResult<User> PutUser(User user)
+        {
+            return BadRequest();
         }
 
         [HttpDelete("{id}")]
@@ -87,6 +131,12 @@ namespace SaitynoLaboras.Controllers
                 _repository.DeleteUser(id, user);
                 return Ok(user);
             }
+        }
+
+        [HttpDelete]
+        public ActionResult<User> DeleteUser()
+        {
+            return BadRequest();
         }
     }
 }

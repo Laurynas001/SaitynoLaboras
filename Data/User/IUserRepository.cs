@@ -13,5 +13,6 @@ namespace SaitynoLaboras.Data
         int PostUser(User user);
         void PutUser(int id, User user);
         void DeleteUser(int id, User user);
+        void PatchUser(int id, User user);
     }
 }
