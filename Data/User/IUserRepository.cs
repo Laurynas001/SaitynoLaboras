@@ -10,7 +10,7 @@ namespace SaitynoLaboras.Data
     {
         IEnumerable<User> GetAllUsers();
         User GetUserById(int id);
-        int PostUser(User user);
+        void PostUser(User user);
         void PutUser(int id, User user);
         void DeleteUser(int id, User user);
         void PatchUser(int id, User user);

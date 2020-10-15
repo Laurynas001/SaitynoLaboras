@@ -10,13 +10,21 @@ namespace SaitynoLaboras.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public double A98Price { get; set; }
+        [Required]
         public double A95Price { get; set; }
+        [Required]
         public double DPrice { get; set; }
+        [Required]
         public double DzPrice { get; set; }
+        [Required]
         public double GasPrice { get; set; }
+        [Required]
         public DateTime Date { get; set; }
+        [Required]
         public int GasStationId { get; set; }
-        //public GasStation GasStation { get; set; }
+        [Required]
+        public GasStation GasStation { get; set; }
     }
 }

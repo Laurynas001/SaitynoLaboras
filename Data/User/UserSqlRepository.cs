@@ -55,20 +55,11 @@ namespace SaitynoLaboras.Data
             _context.SaveChanges();
         }
 
-        public int PostUser(User user)
+        public void PostUser(User user)
         {
-            var users = _context.Users.Where(a => a.Username == user.Username && a.Password == user.Password && a.Email == user.Email).ToList();
-            if (users.Count > 0)
-            {
-                return 409;
-            }
-            else
-            {
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                int id = _context.GasStations.Max(a => a.Id);
-                return id;
-            }
+            user.Reminders = new List<Reminder>();
+            _context.Users.Add(user);
+            _context.SaveChanges();
         }
 
         public void PutUser(int id, User user)

@@ -38,7 +38,7 @@ namespace SaitynoLaboras.Data
         public GasStation GetGasStationById(int id)
         {
             var gasStation = _context.GasStations.FirstOrDefault(a => a.Id == id);
-            if (gasStation.Name != null)
+            if (gasStation != null)
             {
                 gasStation.Prices = _context.Prices.Where(a => a.GasStationId == gasStation.Id).ToList();
             }
@@ -71,22 +71,11 @@ namespace SaitynoLaboras.Data
             _context.SaveChanges();
         }
 
-        public int PostGasStation(GasStation gasStation)
+        public void PostGasStation(GasStation gasStation)
         {
-            var gasStations = _context.GasStations.Where(a => a.Name == gasStation.Name && a.Latitude == gasStation.Latitude && a.Longtitude == gasStation.Longtitude).ToList();
-            if (gasStations.Count == 0)
-            {
-                gasStation.Prices = new List<Price>();
-                _context.GasStations.Add(gasStation);
-                _context.SaveChanges();
-                int id = _context.GasStations.Max(a => a.Id);
-                return id;
-            }
-            else
-            {
-                return 409;
-            }
-
+            gasStation.Prices = new List<Price>();
+            _context.GasStations.Add(gasStation);
+            _context.SaveChanges();
         }
 
         public void PutGasStation(int id, GasStation gasStation)

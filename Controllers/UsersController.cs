@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SaitynoLaboras.Data;
+using SaitynoLaboras.DTOs.User;
 using SaitynoLaboras.Models;
 using System;
 using System.Collections.Generic;
@@ -13,13 +15,16 @@ namespace SaitynoLaboras.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _repository;
-        public UsersController(IUserRepository repository)
+        private readonly IMapper _mapper;
+
+        public UsersController(IUserRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<User>> GetAllUsers()
+        public ActionResult<IEnumerable<UserReadDTO>> GetAllUsers()
         {
             var users = _repository.GetAllUsers().ToList();
             if (users.Count == 0)
@@ -28,72 +33,67 @@ namespace SaitynoLaboras.Controllers
             }
             else
             {
-                return Ok(users);
+                return Ok(_mapper.Map<IEnumerable<UserReadDTO>>(users));
             }
         }
-        [HttpGet("{id}")]
-        public ActionResult<User> GetUserById(int id)
+        [HttpGet("{id}", Name = "GetUserById")]
+        public ActionResult<UserReadDTO> GetUserById(int id)
         {
             var user = _repository.GetUserById(id);
-            if (user != null)
+            if (user == null)
             {
-                return Ok(user);
+                return NotFound();
             }
             else
             {
-                return NotFound();
+                return Ok(_mapper.Map<UserReadDTO>(user));
             }
         }
 
         [HttpPost]
-        public ActionResult<User> PostUser(User user)
+        public ActionResult<User> PostUser(UserCreateDTO user)
         {
-            int id =  _repository.PostUser(user);
-            if (id == 409)
-            {
-                return Conflict();
-            }
-            else
-            {
-                return Created(new Uri("https://saitynolaboras20201008165604.azurewebsites.net/Users/" + id), user);
-            }
+            var userMapped = _mapper.Map<User>(user);
+            _repository.PostUser(userMapped);
+            var userReadDTO = _mapper.Map<UserReadDTO>(userMapped);
+            return CreatedAtRoute(nameof(GetUserById), new { Id = userReadDTO.Id }, userReadDTO);
         }
 
         [HttpPost("{id}")]
-        public ActionResult<User> PostUser(int id, User user)
+        public ActionResult PostUser(int id, UserCreateDTO user)
         {
-            return NotFound();
+            return BadRequest();
         }
 
         [HttpPatch("{id}")]
-        public ActionResult<User> PatchUser(int id, User user)
+        public ActionResult PatchUser(int id, UserPartialUpdateDTO user)
         {
             var user1 = _repository.GetUserById(id);
             if (user1 == null)
             {
                 return NotFound();
             }
-            else if (user.Email == null && user.Password == null && user.Username == null)
+            else if (user == null)
             {
                 return BadRequest();
             }
             else
             {
-                _repository.PatchUser(id, user);
-                user1.Id = id;
-                return Ok(user1);
+                var userMapped = _mapper.Map<User>(user);
+                _repository.PatchUser(id, userMapped);
+                return NoContent();
             }
         }
 
         [HttpPatch]
-        public ActionResult<User> PatchUser(User user)
+        public ActionResult PatchUser(UserPartialUpdateDTO user)
         {
             return BadRequest();
         }
 
 
         [HttpPut("{id}")]
-        public ActionResult<User> PutUser(int id, User user)
+        public ActionResult PutUser(int id, UserUpdateDTO user)
         {
             var user1 = _repository.GetUserById(id);
             if (user1 == null)
@@ -106,20 +106,20 @@ namespace SaitynoLaboras.Controllers
             }
             else
             {
-                _repository.PutUser(id, user);
-                user.Id = id;
-                return Ok(user);
+                var userMapped = _mapper.Map<User>(user);
+                _repository.PutUser(id, userMapped);
+                return NoContent();
             }
         }
 
         [HttpPut]
-        public ActionResult<User> PutUser(User user)
+        public ActionResult PutUser(UserUpdateDTO user)
         {
             return BadRequest();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<User> DeleteUser(int id)
+        public ActionResult DeleteUser(int id)
         {
             var user = _repository.GetUserById(id);
             if (user == null)
@@ -129,12 +129,12 @@ namespace SaitynoLaboras.Controllers
             else
             {
                 _repository.DeleteUser(id, user);
-                return Ok(user);
+                return NoContent();
             }
         }
 
         [HttpDelete]
-        public ActionResult<User> DeleteUser()
+        public ActionResult DeleteUser()
         {
             return BadRequest();
         }

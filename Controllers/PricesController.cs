@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Schema;
 using SaitynoLaboras.Data;
+using SaitynoLaboras.DTOs.Price;
 using SaitynoLaboras.Models;
 using System;
 using System.Collections.Generic;
@@ -13,33 +16,31 @@ namespace SaitynoLaboras.Controllers
     public class PricesController : ControllerBase
     {
         private readonly IPriceRepository _repository;
-        public PricesController(IPriceRepository repository)
+        private readonly IMapper _mapper;
+
+        public PricesController(IPriceRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         [HttpPost("{GSid}/Prices")]
-        public ActionResult<Price> PostPrice(int GSid, Price price)
+        public ActionResult<PriceCreateDTO> PostPrice(int GSid, PriceCreateDTO price)
         {
-            int id = _repository.PostPrice(GSid, price);
-            if (id != 409)
-            {
-                return CreatedAtRoute(new Uri("https://saitynolaboras20201008165604.azurewebsites.net/GasStations/" + GSid + "/Prices"), price);
-            }
-            else
-            {
-                return Conflict();
-            }
+            var priceModel = _mapper.Map<Price>(price);
+            _repository.PostPrice(GSid, priceModel);
+            var priceReadDTO = _mapper.Map<PriceReadDTO>(priceModel);
+            return CreatedAtRoute(nameof(GetPriceById), new { Id = priceReadDTO.Id }, priceReadDTO);
         }
 
         [HttpPost("{GSid}/Prices/{Pid}")]
         public ActionResult<Price> PostPrice(int GSid, int Pid, Price price)
         {
-            return NotFound();
+            return BadRequest();
         }
 
         [HttpGet("{GSid}/Prices")]
-        public ActionResult<IEnumerable<Price>> GetAllPrices(int GSid)
+        public ActionResult<IEnumerable<PriceReadDTO>> GetAllPrices(int GSid)
         {
             var prices = _repository.GetAllPrices(GSid).ToList();
             if (prices.Count == 0)
@@ -48,12 +49,12 @@ namespace SaitynoLaboras.Controllers
             }
             else
             {
-                return Ok(prices);
+                return Ok(_mapper.Map<IEnumerable<PriceReadDTO>>(prices));
             }
         }
 
         [HttpGet("/Prices")]
-        public ActionResult<IEnumerable<Price>> GetAllPrices()
+        public ActionResult<IEnumerable<PriceReadDTO>> GetAllPrices()
         {
             int id = -1;
             var prices = _repository.GetAllPrices(id).ToList();
@@ -63,12 +64,12 @@ namespace SaitynoLaboras.Controllers
             }
             else
             {
-                return Ok(prices);
+                return Ok(_mapper.Map<IEnumerable<PriceReadDTO>>(prices));
             }
         }
 
-        [HttpGet("{GSid}/Prices/{Pid}")]
-        public ActionResult<Price> GetPriceById(int GSid, int Pid)
+        [HttpGet("{GSid}/Prices/{Pid}", Name ="GetPriceById")]
+        public ActionResult<PriceReadDTO> GetPriceById(int GSid, int Pid)
         {
             var price = _repository.GetPriceById(GSid, Pid);
             if (price == null)
@@ -77,58 +78,59 @@ namespace SaitynoLaboras.Controllers
             }
             else
             {
-                return Ok(price);
+                return Ok(_mapper.Map<PriceReadDTO>(price));
             }
         }
 
-        [HttpPatch("{GSid}/Prices")]
-        public ActionResult<Price> PatchPrice()
-        {
-            return BadRequest();
-        }
-
         [HttpPatch("{GSid}/Prices/{Pid}")]
-        public ActionResult<Price> PatchPrice(int GSid, int Pid, Price price)
+        public ActionResult PatchPrice(int GSid, int Pid, PricePartialUpdateDTO price)
         {
             var foundPrice = _repository.GetPriceById(GSid, Pid);
             if (foundPrice == null)
             {
                 return NotFound();
             }
-            else if (price.A95Price == 0 && price.A98Price == 0 && price.DPrice == 0 && price.DzPrice == 0 && price.GasPrice == 0 && price.Date == null)
+            else if (price == null)
             {
                 return BadRequest();
             }
             else
             {
-                _repository.PatchPrice(GSid, Pid, price);
-                return Ok(foundPrice);
+                var priceMapped = _mapper.Map<Price>(price);
+                _repository.PatchPrice(GSid, Pid, priceMapped);
+                return NoContent();
             }
         }
 
+        [HttpPatch("{GSid}/Prices")]
+        public ActionResult PatchPrice(PricePartialUpdateDTO price)
+        {
+            return BadRequest();
+        }
+
         [HttpPut("{GSid}/Prices/{Pid}")]
-        public ActionResult<Price> PutPrice(int GSid, int Pid, Price price)
+        public ActionResult<Price> PutPrice(int GSid, int Pid, PriceUpdateDTO price)
         {
             var foundPrice = _repository.GetPriceById(GSid, Pid);
             if (foundPrice ==  null)
             {
                 return NotFound();
             }
-            else if (price.A95Price == 0 || price.A98Price == 0 || price.DPrice == 0 || price.DzPrice == 0 || price.GasPrice == 0 || price.Date == null)
+            else if (price.A95Price == 0 || price.A98Price == 0 || price.DPrice == 0 || price.DzPrice == 0 || price.GasPrice == 0)
             {
                 return BadRequest();
             }
             else
             {
-                _repository.PutPrice(GSid, Pid, price);
-                price.Id = Pid;
-                return Ok(price);
+                var priceMapped = _mapper.Map<Price>(price);
+                _repository.PutPrice(GSid, Pid, priceMapped);
+                return NoContent();
             }
         }
 
 
         [HttpPut("{GSid}/Prices")]
-        public ActionResult<Price> PutPrice(int GSid, Price price)
+        public ActionResult PutPrice(int GSid, PriceUpdateDTO price)
         {
             return BadRequest();
         }
@@ -144,12 +146,12 @@ namespace SaitynoLaboras.Controllers
             else
             {
                 _repository.DeletePrice(GSid, Pid);
-                return Ok(price);
+                return NoContent();
             }
         }
 
         [HttpDelete("{GSid}/Prices")]
-        public ActionResult<Price> DeletePrice(int GSid)
+        public ActionResult DeletePrice(int GSid)
         {
             return BadRequest();
         }

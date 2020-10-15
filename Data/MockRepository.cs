@@ -45,7 +45,7 @@ namespace SaitynoLaboras.Data
             throw new NotImplementedException();
         }
 
-        int IGasStationRepository.PostGasStation(GasStation gasStation)
+        void IGasStationRepository.PostGasStation(GasStation gasStation)
         {
             throw new NotImplementedException();
         }

@@ -10,7 +10,7 @@ namespace SaitynoLaboras.Data
     {
         IEnumerable<GasStation> GetAllGasStations();
         GasStation GetGasStationById(int id);
-        int PostGasStation(GasStation gasStation);
+        void PostGasStation(GasStation gasStation);
         void PutGasStation(int id, GasStation gasStation);
         void DeleteGasStation(int id);
         void PatchGasStation(int id, GasStation gasStation);

@@ -13,11 +13,11 @@ namespace SaitynoLaboras.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
-                    City = table.Column<string>(maxLength: 50, nullable: true),
-                    Address = table.Column<string>(maxLength: 50, nullable: true),
-                    Longtitude = table.Column<string>(maxLength: 50, nullable: true),
-                    Latitude = table.Column<string>(maxLength: 50, nullable: true)
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    City = table.Column<string>(maxLength: 50, nullable: false),
+                    Address = table.Column<string>(maxLength: 50, nullable: false),
+                    Longtitude = table.Column<string>(maxLength: 50, nullable: false),
+                    Latitude = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,9 +30,9 @@ namespace SaitynoLaboras.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true)
+                    Username = table.Column<string>(maxLength: 50, nullable: false),
+                    Password = table.Column<string>(maxLength: 50, nullable: false),
+                    Email = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,16 +70,23 @@ namespace SaitynoLaboras.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GasStationName = table.Column<string>(maxLength: 50, nullable: true),
-                    GasType = table.Column<string>(nullable: true),
+                    GasStationName = table.Column<string>(maxLength: 50, nullable: false),
+                    GasType = table.Column<string>(maxLength: 50, nullable: false),
                     CreationDate = table.Column<DateTime>(nullable: false),
                     ValidUntil = table.Column<DateTime>(nullable: false),
                     WantedPrice = table.Column<double>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    UserId = table.Column<int>(nullable: false),
+                    GasStationId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reminders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reminders_GasStations_GasStationId",
+                        column: x => x.GasStationId,
+                        principalTable: "GasStations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Reminders_Users_UserId",
                         column: x => x.UserId,
@@ -91,6 +98,11 @@ namespace SaitynoLaboras.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Prices_GasStationId",
                 table: "Prices",
+                column: "GasStationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reminders_GasStationId",
+                table: "Reminders",
                 column: "GasStationId");
 
             migrationBuilder.CreateIndex(

@@ -27,22 +27,27 @@ namespace SaitynoLaboras.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Latitude")
+                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Longtitude")
+                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -96,12 +101,18 @@ namespace SaitynoLaboras.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("GasStationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("GasStationName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("GasType")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -113,6 +124,8 @@ namespace SaitynoLaboras.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GasStationId");
 
                     b.HasIndex("UserId");
 
@@ -127,13 +140,19 @@ namespace SaitynoLaboras.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 
@@ -142,7 +161,7 @@ namespace SaitynoLaboras.Migrations
 
             modelBuilder.Entity("SaitynoLaboras.Models.Price", b =>
                 {
-                    b.HasOne("SaitynoLaboras.Models.GasStation", null)
+                    b.HasOne("SaitynoLaboras.Models.GasStation", "GasStation")
                         .WithMany("Prices")
                         .HasForeignKey("GasStationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -151,7 +170,13 @@ namespace SaitynoLaboras.Migrations
 
             modelBuilder.Entity("SaitynoLaboras.Models.Reminder", b =>
                 {
-                    b.HasOne("SaitynoLaboras.Models.User", null)
+                    b.HasOne("SaitynoLaboras.Models.GasStation", "GasStation")
+                        .WithMany("Reminders")
+                        .HasForeignKey("GasStationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SaitynoLaboras.Models.User", "User")
                         .WithMany("Reminders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

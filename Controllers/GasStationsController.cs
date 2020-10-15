@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SaitynoLaboras.Data;
+using SaitynoLaboras.DTOs.GasStation;
 using SaitynoLaboras.Models;
 using System;
 using System.Collections.Generic;
@@ -14,105 +16,112 @@ namespace SaitynoLaboras.Controllers
     public class GasStationsController : ControllerBase
     {
         private readonly IGasStationRepository _repository;
+        private readonly IMapper _mapper;
 
-        public GasStationsController(IGasStationRepository repository)
+        public GasStationsController(IGasStationRepository repository, IMapper mapper)
         {
             _repository = repository;
-        }
-        [HttpGet]
-        public ActionResult<IEnumerable<GasStation>> GetAllGasStations()
-        {
-            var gasStations = _repository.GetAllGasStations();
-            return Ok(gasStations);
+            _mapper = mapper;
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<GasStation> GetGasStationById(int id)
+        [HttpGet]
+        public ActionResult<IEnumerable<GasStationReadDTO>> GetAllGasStations()
         {
-            var gasStation = _repository.GetGasStationById(id);
-            if (gasStation.Name == null || gasStation.Name == "" || gasStation == null)
+            var gasStations = _repository.GetAllGasStations().ToList();
+            if (gasStations.Count == 0)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(gasStation);
+                return Ok(_mapper.Map<IEnumerable<GasStationReadDTO>>(gasStations));
             }
         }
-        [HttpPost]
-        public ActionResult<GasStation> PostGasStation(GasStation gasStation)
+
+        [HttpGet("{id}", Name ="GetGasStationById")]
+        public ActionResult<GasStationReadDTO> GetGasStationById(int id)
         {
-            int id = _repository.PostGasStation(gasStation);
-            if (id != 409)  
+            var gasStation = _repository.GetGasStationById(id);
+            if (gasStation == null)
             {
-                return Created(new Uri("https://saitynolaboras20201008165604.azurewebsites.net/GasStations/" + id), gasStation);
+                return NotFound();
             }
             else
             {
-                return Conflict();
+                return Ok(_mapper.Map<GasStationReadDTO>(gasStation));
             }
+        }
+
+        [HttpPost]
+        public ActionResult<GasStationCreateDTO> PostGasStation(GasStationCreateDTO gasStationCreateDTO)
+        {
+            var gasStationModel = _mapper.Map<GasStation>(gasStationCreateDTO);
+            _repository.PostGasStation(gasStationModel);
+            var gasStationReadDTO = _mapper.Map<GasStationReadDTO>(gasStationModel);
+            //return Created(new Uri("https://saitynolaboras20201008165604.azurewebsites.net/GasStations/" + id), gasStationCreateDTO);
+            return CreatedAtRoute(nameof(GetGasStationById), new { Id = gasStationReadDTO.Id }, gasStationReadDTO);
         }
 
         [HttpPost("{id}")]
-        public ActionResult<GasStation> PostGasStation(int id, GasStation gasStation)
+        public ActionResult PostGasStation(int id, GasStationCreateDTO gasStationCreateDTO)
         {
-                return NotFound();
+            return BadRequest();
         }
 
         [HttpPut("{id}")]
-        public ActionResult<GasStation> PutGasStation(int id, GasStation gasStation)
+        public ActionResult PutGasStation(int id, GasStationUpdateDTO gasStation)
         {
             var gasStation1 = _repository.GetGasStationById(id);
             if (gasStation1 == null)
             {
                 return NotFound();
             }
-            else if (gasStation.Latitude == null || gasStation.Longtitude == null || gasStation.Name == null || gasStation.Address == null || gasStation.City == null)
+            else if (gasStation == null)
             {
                 return BadRequest();
             }
             else
             {
-                _repository.PutGasStation(id, gasStation);
-                gasStation.Id = id;
-                return Ok(gasStation);
+                var gasStationMapped = _mapper.Map<GasStation>(gasStation);
+                _repository.PutGasStation(id, gasStationMapped);
+                return NoContent();
             }
         }
 
+        [HttpPut]
+        public ActionResult PutGasStation(GasStationUpdateDTO gasStation)
+        {
+            return BadRequest();
+        }
+
         [HttpPatch]
-        public ActionResult<GasStation> PatchGasStation()
+        public ActionResult PatchGasStation(GasStationUpdateDTO gasStation)
         {
             return BadRequest();
         }
 
         [HttpPatch("{id}")]
-        public ActionResult<GasStation> PatchGasStation(int id, GasStation gasStation)
+        public ActionResult PatchGasStation(int id, GasStationPartialUpdateDTO gasStation)
         {
             var gasStation1 = _repository.GetGasStationById(id);
             if (gasStation1 == null)
             {
                 return NotFound();
             }
-            else if (gasStation.Latitude == null && gasStation.Longtitude == null && gasStation.Name == null && gasStation.Address == null && gasStation.City == null)
+            else if (gasStation == null)
             {
                 return BadRequest();
             }
             else
             {
-                _repository.PatchGasStation(id, gasStation);
-                gasStation1 = _repository.GetGasStationById(id);
-                return Ok(gasStation1);
+                var gasStationMapped = _mapper.Map<GasStation>(gasStation);
+                _repository.PatchGasStation(id, gasStationMapped);
+                return NoContent();
             }
         }
 
-        [HttpPut]
-        public ActionResult<GasStation> PutGasStation()
-        {
-            return BadRequest();
-        }
-
         [HttpDelete("{id}")]
-        public ActionResult<GasStation> DeleteGasStation(int id)
+        public ActionResult DeleteGasStation(int id)
         {
             var gasStation = _repository.GetGasStationById(id);
             if (gasStation == null)
@@ -122,12 +131,12 @@ namespace SaitynoLaboras.Controllers
             else
             {
                 _repository.DeleteGasStation(id);
-                return Ok(gasStation);
+                return NoContent();
             }
         }
 
         [HttpDelete]
-        public ActionResult<GasStation> DeleteGasStation()
+        public ActionResult DeleteGasStation()
         {
             return BadRequest();
         }

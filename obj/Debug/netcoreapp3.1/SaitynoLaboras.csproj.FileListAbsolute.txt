@@ -64,3 +64,10 @@ D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\System.Web.Http.WebHost.dll
 D:\C_Extend\Desktop\SaitynoLaboras\obj\Debug\netcoreapp3.1\SaitynoLaboras.csproj.CoreCompileInputs.cache
 D:\C_Extend\Desktop\SaitynoLaboras\obj\Debug\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cache
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\C_Extend\Desktop\SaitynoLaboras\obj\Debug\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cs

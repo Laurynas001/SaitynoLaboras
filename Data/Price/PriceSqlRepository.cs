@@ -74,26 +74,14 @@ namespace SaitynoLaboras.Data
             _context.SaveChanges();
         }
 
-        public int PostPrice(int GSid, Price price)
+        public void PostPrice(int GSid, Price price)
         {
-            var prices = _context.Prices.Where(a => a.Date == price.Date).ToList();
-            if (prices.Count == 0)
-            {
-                price.Date = DateTime.Now;
-                price.GasStationId = GSid;
-                var gasStation = _context.GasStations.FirstOrDefault(a => a.Id == GSid);
-                //price.GasStation = gasStation;
-                _context.Prices.Add(price);
-                int id = _context.Prices.Max(a => a.Id);
-                //gasStation.Prices.Add(price);
-                _context.SaveChanges();
-                return id;
-            }
-            else
-            {
-                return 409;
-            }
-
+            price.Date = DateTime.Now;
+            price.GasStationId = GSid;
+            var gasStation = _context.GasStations.FirstOrDefault(a => a.Id == GSid);
+            price.GasStation = gasStation;
+            _context.Prices.Add(price);
+            _context.SaveChanges();
         }
 
         public void PutPrice(int GSid, int Pid, Price price)
