@@ -56,8 +56,6 @@ D:\C_Extend\Desktop\SaitynoLaboras\bin\Release\netcoreapp3.1\runtimes\win\lib\ne
 D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csprojAssemblyReference.cache
 D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.AssemblyInfoInputs.cache
 D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.AssemblyInfo.cs
-D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csproj.CoreCompileInputs.cache
-D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cache
 D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.RazorTargetAssemblyInfo.cache
 D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csproj.CopyComplete
 D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\staticwebassets\SaitynoLaboras.StaticWebAssets.Manifest.cache
@@ -69,3 +67,10 @@ D:\C_Extend\Desktop\SaitynoLaboras\bin\Release\netcoreapp3.1\Properties\serviceD
 D:\C_Extend\Desktop\SaitynoLaboras\bin\Release\netcoreapp3.1\Properties\serviceDependencies.SaitynoLaboras20201008165604 - Web Deploy.json
 D:\C_Extend\Desktop\SaitynoLaboras\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\SaitynoLaboras20201008165604 - Web Deploy\mssql1.arm.json
 D:\C_Extend\Desktop\SaitynoLaboras\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\SaitynoLaboras20201008165604 - Web Deploy\profile.arm.json
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Release\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\C_Extend\Desktop\SaitynoLaboras\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csproj.CoreCompileInputs.cache
+D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cs
+D:\C_Extend\Desktop\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cache

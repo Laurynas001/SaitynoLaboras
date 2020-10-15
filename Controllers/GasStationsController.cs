@@ -30,7 +30,7 @@ namespace SaitynoLaboras.Controllers
         public ActionResult<GasStation> GetGasStationById(int id)
         {
             var gasStation = _repository.GetGasStationById(id);
-            if (gasStation.Name == null)
+            if (gasStation.Name == null || gasStation.Name == "" || gasStation == null)
             {
                 return NotFound();
             }
