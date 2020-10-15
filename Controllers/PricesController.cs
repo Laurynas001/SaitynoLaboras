@@ -28,9 +28,16 @@ namespace SaitynoLaboras.Controllers
         public ActionResult<PriceCreateDTO> PostPrice(int GSid, PriceCreateDTO price)
         {
             var priceModel = _mapper.Map<Price>(price);
-            _repository.PostPrice(GSid, priceModel);
+            try
+            {
+                _repository.PostPrice(GSid, priceModel);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
             var priceReadDTO = _mapper.Map<PriceReadDTO>(priceModel);
-            return CreatedAtRoute(nameof(GetPriceById), new { Id = priceReadDTO.Id }, priceReadDTO);
+            return CreatedAtRoute(nameof(GetPriceById), new { GSid, Pid = priceReadDTO.Id }, priceReadDTO);
         }
 
         [HttpPost("{GSid}/Prices/{Pid}")]
@@ -68,7 +75,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
-        [HttpGet("{GSid}/Prices/{Pid}", Name ="GetPriceById")]
+        [HttpGet("{GSid}/Prices/{Pid}", Name= "GetPriceById")]
         public ActionResult<PriceReadDTO> GetPriceById(int GSid, int Pid)
         {
             var price = _repository.GetPriceById(GSid, Pid);
@@ -97,7 +104,15 @@ namespace SaitynoLaboras.Controllers
             else
             {
                 var priceMapped = _mapper.Map<Price>(price);
-                _repository.PatchPrice(GSid, Pid, priceMapped);
+                try
+                {
+                    _repository.PatchPrice(GSid, Pid, priceMapped);
+                }
+                catch (Exception)
+                {
+
+                    return NotFound();
+                }
                 return NoContent();
             }
         }
@@ -123,7 +138,14 @@ namespace SaitynoLaboras.Controllers
             else
             {
                 var priceMapped = _mapper.Map<Price>(price);
-                _repository.PutPrice(GSid, Pid, priceMapped);
+                try
+                {
+                    _repository.PutPrice(GSid, Pid, priceMapped);
+                }
+                catch (Exception)
+                {
+                    return NotFound();
+                }
                 return NoContent();
             }
         }
@@ -136,7 +158,7 @@ namespace SaitynoLaboras.Controllers
         }
 
         [HttpDelete("{GSid}/Prices/{Pid}")]
-        public ActionResult<Price> DeletePrice(int GSid, int Pid)
+        public ActionResult<PriceReadDTO> DeletePrice(int GSid, int Pid)
         {
             var price = _repository.GetPriceById(GSid, Pid);
             if (price == null)
@@ -145,13 +167,21 @@ namespace SaitynoLaboras.Controllers
             }
             else
             {
-                _repository.DeletePrice(GSid, Pid);
-                return NoContent();
+                try
+                {
+                    _repository.DeletePrice(GSid, Pid);
+                }
+                catch (Exception)
+                {
+
+                    return NotFound();
+                }
+                return Ok(_mapper.Map<PriceReadDTO>(price));
             }
         }
 
         [HttpDelete("{GSid}/Prices")]
-        public ActionResult DeletePrice(int GSid)
+        public ActionResult<PriceReadDTO> DeletePrice(int GSid)
         {
             return BadRequest();
         }

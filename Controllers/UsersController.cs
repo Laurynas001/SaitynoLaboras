@@ -119,7 +119,7 @@ namespace SaitynoLaboras.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteUser(int id)
+        public ActionResult<UserReadDTO> DeleteUser(int id)
         {
             var user = _repository.GetUserById(id);
             if (user == null)
@@ -129,12 +129,12 @@ namespace SaitynoLaboras.Controllers
             else
             {
                 _repository.DeleteUser(id, user);
-                return NoContent();
+                return Ok(_mapper.Map<UserReadDTO>(user));
             }
         }
 
         [HttpDelete]
-        public ActionResult DeleteUser()
+        public ActionResult<UserReadDTO> DeleteUser()
         {
             return BadRequest();
         }

@@ -121,7 +121,7 @@ namespace SaitynoLaboras.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteGasStation(int id)
+        public ActionResult<GasStationReadDTO> DeleteGasStation(int id)
         {
             var gasStation = _repository.GetGasStationById(id);
             if (gasStation == null)
@@ -131,12 +131,12 @@ namespace SaitynoLaboras.Controllers
             else
             {
                 _repository.DeleteGasStation(id);
-                return NoContent();
+                return Ok(_mapper.Map<GasStationReadDTO>(gasStation));
             }
         }
 
         [HttpDelete]
-        public ActionResult DeleteGasStation()
+        public ActionResult<GasStationReadDTO> DeleteGasStation()
         {
             return BadRequest();
         }
