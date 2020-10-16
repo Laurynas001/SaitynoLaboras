@@ -35,7 +35,7 @@ namespace SaitynoLaboras.Controllers
             }
             else
             {
-                return Ok(_mapper.Map<IEnumerable<Reminder>>(reminders));
+                return Ok(_mapper.Map<IEnumerable<ReminderReadDTO>>(reminders));
             }
         }
 
@@ -50,7 +50,7 @@ namespace SaitynoLaboras.Controllers
             }
             else
             {
-                return Ok(_mapper.Map<IEnumerable<Reminder>>(reminders));
+                return Ok(_mapper.Map<IEnumerable<ReminderReadDTO>>(reminders));
             }
         }
 
@@ -64,7 +64,7 @@ namespace SaitynoLaboras.Controllers
             }
             else
             {
-                return Ok(_mapper.Map<Reminder>(reminder));
+                return Ok(_mapper.Map<ReminderReadDTO>(reminder));
             }
         }
 

@@ -31,6 +31,7 @@ namespace SaitynoLaboras.Data
             foreach (var gasStation in gasStations)
             {
                 gasStation.Prices = _context.Prices.Where(a => a.GasStationId == gasStation.Id).ToList();
+                gasStation.Reminders = _context.Reminders.Where(a => a.GasStationId == gasStation.Id).ToList();
             }
             return gasStations;
         }
@@ -41,6 +42,7 @@ namespace SaitynoLaboras.Data
             if (gasStation != null)
             {
                 gasStation.Prices = _context.Prices.Where(a => a.GasStationId == gasStation.Id).ToList();
+                gasStation.Reminders = _context.Reminders.Where(a => a.GasStationId == gasStation.Id).ToList();
             }
             return gasStation;
         }
@@ -84,6 +86,8 @@ namespace SaitynoLaboras.Data
             gasStationGet.Latitude = gasStation.Latitude;
             gasStationGet.Longtitude = gasStation.Longtitude;
             gasStationGet.Name = gasStation.Name;
+            gasStationGet.Address = gasStation.Address;
+            gasStationGet.City = gasStation.City;
             _context.SaveChanges();
         }
     }

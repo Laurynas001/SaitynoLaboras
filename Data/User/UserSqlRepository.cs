@@ -33,7 +33,10 @@ namespace SaitynoLaboras.Data
         public User GetUserById(int id)
         {
             var user = _context.Users.FirstOrDefault(a => a.Id == id);
-            user.Reminders = _context.Reminders.Where(a => a.UserId == user.Id).ToList();
+            if (user != null)
+            {
+                user.Reminders = _context.Reminders.Where(a => a.UserId == user.Id).ToList();
+            }
             return user;
         }
 
