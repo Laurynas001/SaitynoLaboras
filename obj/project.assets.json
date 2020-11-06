@@ -6308,11 +6308,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C_Extend\\Desktop\\SaitynoLaboras\\SaitynoLaboras.csproj",
+      "projectUniqueName": "D:\\C_Extend\\Desktop\\Saityno taikomuju programu projektavimas\\L1\\SaitynoLaboras\\SaitynoLaboras.csproj",
       "projectName": "SaitynoLaboras",
-      "projectPath": "D:\\C_Extend\\Desktop\\SaitynoLaboras\\SaitynoLaboras.csproj",
+      "projectPath": "D:\\C_Extend\\Desktop\\Saityno taikomuju programu projektavimas\\L1\\SaitynoLaboras\\SaitynoLaboras.csproj",
       "packagesPath": "C:\\Users\\MASTER\\.nuget\\packages\\",
-      "outputPath": "D:\\C_Extend\\Desktop\\SaitynoLaboras\\obj\\",
+      "outputPath": "D:\\C_Extend\\Desktop\\Saityno taikomuju programu projektavimas\\L1\\SaitynoLaboras\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
