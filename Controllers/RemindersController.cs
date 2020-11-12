@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SaitynoLaboras.Controllers;
+using Microsoft.AspNetCore.Authorization;
+using SaitynoLaboras.Authentication_Authorization;
 
 namespace SaitynoLaboras.Controllers
 {
@@ -24,6 +26,7 @@ namespace SaitynoLaboras.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet("/[controller]")]
         public ActionResult<IEnumerable<ReminderReadDTO>> GetAllReminders()
         {
@@ -39,6 +42,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{Uid}/[controller]")]
         public ActionResult<IEnumerable<ReminderReadDTO>> GetAllReminders(int Uid)
         {
@@ -54,6 +58,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{Uid}/[controller]/{Rid}", Name="GetReminderById")]
         public ActionResult<ReminderReadDTO> GetReminderById(int Uid, int Rid)
         {
@@ -68,6 +73,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("{Uid}/[controller]")]
         public ActionResult<ReminderCreateDTO> PostReminder(int Uid, ReminderCreateDTO reminder)
         {
@@ -86,12 +92,14 @@ namespace SaitynoLaboras.Controllers
             return CreatedAtRoute(nameof(GetReminderById), new { Uid, Rid = reminderReadDTO.Id }, reminderReadDTO);
         }
 
+        [Authorize]
         [HttpPost("{Uid}/[controller]/{Rid}")]
         public ActionResult PostReminder(int Uid, int Rid, ReminderCreateDTO reminder)
         {
             return BadRequest();
         }
 
+        [Authorize]
         [HttpPut("{Uid}/[controller]/{Rid}")]
         public ActionResult PutReminder(int Uid, int Rid, ReminderUpdateDTO reminder)
         {
@@ -121,12 +129,14 @@ namespace SaitynoLaboras.Controllers
         }
 
 
+        [Authorize]
         [HttpPut("{Uid}/[controller]")]
         public ActionResult PutReminder(int Uid, ReminderUpdateDTO reminder)
         {
             return BadRequest();
         }
 
+        [Authorize]
         [HttpPatch("{Uid}/[controller]/{Rid}")]
         public ActionResult PatchReminder(int Uid, int Rid, ReminderPartialUpdateDTO reminder)
         {
@@ -155,13 +165,14 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("{Uid}/[controller]")]
         public ActionResult PatchReminder(int Uid, ReminderPartialUpdateDTO reminder)
         {
             return BadRequest();
         }
 
-
+        [Authorize]
         [HttpDelete("{Uid}/[controller]/{Rid}")]
         public ActionResult<ReminderReadDTO> DeleteReminder(int Uid, int Rid)
         {
@@ -185,6 +196,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{Uid}/[controller]")]
         public ActionResult<ReminderReadDTO> DeleteReminder(int Uid)
         {

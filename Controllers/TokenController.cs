@@ -26,6 +26,8 @@ namespace SaitynoLaboras.Controllers
             _repository = repository;
             _tokenService = tokenService;
         }
+
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Refresh(Token token)
         {

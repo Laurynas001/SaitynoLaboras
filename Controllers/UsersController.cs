@@ -35,7 +35,7 @@ namespace SaitynoLaboras.Controllers
             _configuration = configuration;
         }
 
-
+        [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<UserReadDTO>> GetAllUsers()
         {
@@ -49,6 +49,8 @@ namespace SaitynoLaboras.Controllers
                 return Ok(_mapper.Map<IEnumerable<UserReadDTO>>(users));
             }
         }
+
+        [Authorize]
         [HttpGet("{id}", Name = "GetUserById")]
         public ActionResult<UserReadDTO> GetUserById(int id)
         {
@@ -63,6 +65,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult<User> PostUser(UserCreateDTO user)
         {
@@ -72,12 +75,14 @@ namespace SaitynoLaboras.Controllers
             return CreatedAtRoute(nameof(GetUserById), new { Id = userReadDTO.Id }, userReadDTO);
         }
 
+        [AllowAnonymous]
         [HttpPost("{id}")]
         public ActionResult PostUser(int id, UserCreateDTO user)
         {
             return BadRequest();
         }
 
+        [Authorize]
         [HttpPatch("{id}")]
         public ActionResult PatchUser(int id, UserPartialUpdateDTO user)
         {
@@ -98,13 +103,14 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch]
         public ActionResult PatchUser(UserPartialUpdateDTO user)
         {
             return BadRequest();
         }
 
-
+        [Authorize]
         [HttpPut("{id}")]
         public ActionResult PutUser(int id, UserUpdateDTO user)
         {
@@ -125,12 +131,14 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         public ActionResult PutUser(UserUpdateDTO user)
         {
             return BadRequest();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public ActionResult<UserReadDTO> DeleteUser(int id)
         {
@@ -146,6 +154,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete]
         public ActionResult<UserReadDTO> DeleteUser()
         {

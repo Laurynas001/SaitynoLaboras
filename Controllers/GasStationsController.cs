@@ -26,7 +26,7 @@ namespace SaitynoLaboras.Controllers
             _mapper = mapper;
         }
 
-        [Authorize(Policy = Policies.Admin)]
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult<IEnumerable<GasStationReadDTO>> GetAllGasStations()
         {
@@ -41,6 +41,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}", Name ="GetGasStationById")]
         public ActionResult<GasStationReadDTO> GetGasStationById(int id)
         {
@@ -55,6 +56,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPost]
         public ActionResult<GasStationCreateDTO> PostGasStation(GasStationCreateDTO gasStationCreateDTO)
         {
@@ -65,12 +67,14 @@ namespace SaitynoLaboras.Controllers
             return CreatedAtRoute(nameof(GetGasStationById), new { Id = gasStationReadDTO.Id }, gasStationReadDTO);
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPost("{id}")]
         public ActionResult PostGasStation(int id, GasStationCreateDTO gasStationCreateDTO)
         {
             return BadRequest();
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPut("{id}")]
         public ActionResult PutGasStation(int id, GasStationUpdateDTO gasStation)
         {
@@ -91,18 +95,21 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPut]
         public ActionResult PutGasStation(GasStationUpdateDTO gasStation)
         {
             return BadRequest();
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPatch]
         public ActionResult PatchGasStation(GasStationUpdateDTO gasStation)
         {
             return BadRequest();
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPatch("{id}")]
         public ActionResult PatchGasStation(int id, GasStationPartialUpdateDTO gasStation)
         {
@@ -123,6 +130,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpDelete("{id}")]
         public ActionResult<GasStationReadDTO> DeleteGasStation(int id)
         {
@@ -138,6 +146,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpDelete]
         public ActionResult<GasStationReadDTO> DeleteGasStation()
         {

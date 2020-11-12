@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Schema;
+using SaitynoLaboras.Authentication_Authorization;
 using SaitynoLaboras.Data;
 using SaitynoLaboras.DTOs.Price;
 using SaitynoLaboras.Models;
@@ -24,6 +26,7 @@ namespace SaitynoLaboras.Controllers
             _mapper = mapper;
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPost("{GSid}/Prices")]
         public ActionResult<PriceCreateDTO> PostPrice(int GSid, PriceCreateDTO price)
         {
@@ -40,12 +43,14 @@ namespace SaitynoLaboras.Controllers
             return CreatedAtRoute(nameof(GetPriceById), new { GSid, Pid = priceReadDTO.Id }, priceReadDTO);
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPost("{GSid}/Prices/{Pid}")]
         public ActionResult<Price> PostPrice(int GSid, int Pid, Price price)
         {
             return BadRequest();
         }
 
+        [AllowAnonymous]
         [HttpGet("{GSid}/Prices")]
         public ActionResult<IEnumerable<PriceReadDTO>> GetAllPrices(int GSid)
         {
@@ -60,6 +65,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("/Prices")]
         public ActionResult<IEnumerable<PriceReadDTO>> GetAllPrices()
         {
@@ -75,6 +81,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{GSid}/Prices/{Pid}", Name= "GetPriceById")]
         public ActionResult<PriceReadDTO> GetPriceById(int GSid, int Pid)
         {
@@ -89,6 +96,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPatch("{GSid}/Prices/{Pid}")]
         public ActionResult PatchPrice(int GSid, int Pid, PricePartialUpdateDTO price)
         {
@@ -117,12 +125,14 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPatch("{GSid}/Prices")]
         public ActionResult PatchPrice(PricePartialUpdateDTO price)
         {
             return BadRequest();
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpPut("{GSid}/Prices/{Pid}")]
         public ActionResult<Price> PutPrice(int GSid, int Pid, PriceUpdateDTO price)
         {
@@ -150,13 +160,14 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
-
+        [Authorize(Policy = Policies.Admin)]
         [HttpPut("{GSid}/Prices")]
         public ActionResult PutPrice(int GSid, PriceUpdateDTO price)
         {
             return BadRequest();
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpDelete("{GSid}/Prices/{Pid}")]
         public ActionResult<PriceReadDTO> DeletePrice(int GSid, int Pid)
         {
@@ -180,6 +191,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
+        [Authorize(Policy = Policies.Admin)]
         [HttpDelete("{GSid}/Prices")]
         public ActionResult<PriceReadDTO> DeletePrice(int GSid)
         {
