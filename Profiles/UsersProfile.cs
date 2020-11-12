@@ -22,6 +22,9 @@ namespace SaitynoLaboras.Profiles
 
             CreateMap<User, UserPartialUpdateDTO>();
             CreateMap<UserPartialUpdateDTO, User>();
+
+            CreateMap<UserLoginDTO, User>();
+            CreateMap<User, UserLoginDTO>();
         }
     }
 }

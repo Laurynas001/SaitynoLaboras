@@ -141,12 +141,8 @@ D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\b
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csprojAssemblyReference.cache
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.AssemblyInfoInputs.cache
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.AssemblyInfo.cs
-D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csproj.CoreCompileInputs.cache
-D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cs
-D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cache
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.RazorTargetAssemblyInfo.cache
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csproj.CopyComplete
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\staticwebassets\SaitynoLaboras.StaticWebAssets.Manifest.cache
@@ -154,3 +150,8 @@ D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\o
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.dll
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.pdb
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.genruntimeconfig.cache
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csproj.CoreCompileInputs.cache
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cs
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cache

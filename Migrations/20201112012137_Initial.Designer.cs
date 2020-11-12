@@ -10,7 +10,7 @@ using SaitynoLaboras.Data;
 namespace SaitynoLaboras.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201015145929_Initial")]
+    [Migration("20201112012137_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -147,6 +147,11 @@ namespace SaitynoLaboras.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);

@@ -1,11 +1,21 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using SaitynoLaboras.Authentication_Authorization;
 using SaitynoLaboras.Data;
 using SaitynoLaboras.DTOs.User;
 using SaitynoLaboras.Models;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SaitynoLaboras.Controllers
@@ -16,12 +26,15 @@ namespace SaitynoLaboras.Controllers
     {
         private readonly IUserRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _configuration;
 
-        public UsersController(IUserRepository repository, IMapper mapper)
+        public UsersController(IUserRepository repository, IMapper mapper, IConfiguration configuration)
         {
             _repository = repository;
             _mapper = mapper;
+            _configuration = configuration;
         }
+
 
         [HttpGet]
         public ActionResult<IEnumerable<UserReadDTO>> GetAllUsers()

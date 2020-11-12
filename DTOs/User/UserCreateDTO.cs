@@ -17,5 +17,8 @@ namespace SaitynoLaboras.DTOs.User
         [Required]
         [MaxLength(50)]
         public string Email { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Role { get; set; }
     }
 }

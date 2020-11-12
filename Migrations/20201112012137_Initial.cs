@@ -32,7 +32,8 @@ namespace SaitynoLaboras.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(maxLength: 50, nullable: false),
                     Password = table.Column<string>(maxLength: 50, nullable: false),
-                    Email = table.Column<string>(maxLength: 50, nullable: false)
+                    Email = table.Column<string>(maxLength: 50, nullable: false),
+                    Role = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {

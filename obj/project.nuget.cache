@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "v/++tK3ZyrzpwWXQKZlKKVD93+at/gbxkj4TFFkpuGY3Dcm+MnA5ueaplU7d1EA/RZdteG3GJyxKdmmHe5+azA==",
+  "dgSpecHash": "24fCKaTifo7FXI4nE2D5umZxIUz3OFHVf7V1fy6+vubpE/sO/lr8KO6CQ0QsED8KdyRZFfYGUlWXJIW+/t/BLA==",
   "success": true,
   "projectFilePath": "D:\\C_Extend\\Desktop\\Saityno taikomuju programu projektavimas\\L1\\SaitynoLaboras\\SaitynoLaboras.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.7\\microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512",
     "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.aspnet.webapi.webhost\\5.2.7\\microsoft.aspnet.webapi.webhost.5.2.7.nupkg.sha512",
+    "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\3.1.10\\microsoft.aspnetcore.authentication.google.3.1.10.nupkg.sha512",
+    "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.10\\microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512",
     "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.aspnetcore.hosting\\2.2.7\\microsoft.aspnetcore.hosting.2.2.7.nupkg.sha512",
     "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
