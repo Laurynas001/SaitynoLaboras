@@ -152,6 +152,12 @@ D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\o
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.genruntimeconfig.cache
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csprojAssemblyReference.cache
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\Scrutor.dll
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.Annotations.dll
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.Filters.dll
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.csproj.CoreCompileInputs.cache
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cs
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cache

@@ -22,14 +22,14 @@ namespace SaitynoLaboras.Authentication_Authorization
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:key"]));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-                var tokeOptions = new JwtSecurityToken(
+                var tokenOptions = new JwtSecurityToken(
                     issuer: _config["JWT:Issuer"],
                     audience: _config["JWT:Audience"],
                     claims: claims,
                     expires: DateTime.Now.AddMinutes(Convert.ToDouble(_config["JWT:DurationInMinutes"])),
                     signingCredentials: signinCredentials
                 );
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
                 return tokenString;
             }
             public string GenerateRefreshToken()

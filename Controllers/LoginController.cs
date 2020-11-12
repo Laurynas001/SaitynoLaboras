@@ -22,9 +22,9 @@ using SaitynoLaboras.Models;
 
 namespace SaitynoLaboras.Controllers
 {
-[ApiController]
-[Route("[controller]")]
-public class LoginController : ControllerBase
+    [ApiController]
+    [Route("[controller]")]
+    public class LoginController : ControllerBase
     {
         //private readonly IConfiguration _config;
         //private readonly IMapper _mapper;
@@ -44,24 +44,18 @@ public class LoginController : ControllerBase
         {
             if (login == null)
             {
-                return BadRequest("Invalid client request");
+                return BadRequest();
             }
             User user = _repository.GetUserByLogin(login);
             if (user == null)
             {
-                return Unauthorized();
+                return NotFound();
             }
             var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, user.Username),
-            new Claim(ClaimTypes.Role, user.Role),
-            new Claim(ClaimTypes.Email, user.Email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
-            for (int i = 0; i < claims.Count; i++)
             {
-                Console.WriteLine(claims[i]);
-            }
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.Role)
+            };
             var accessToken = _tokenService.GenerateAccessToken(claims);
             var refreshToken = _tokenService.GenerateRefreshToken();
             user.RefreshToken = refreshToken;

@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using SaitynoLaboras.Authentication_Authorization;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace SaitynoLaboras
 {
@@ -44,12 +45,33 @@ namespace SaitynoLaboras
             services.AddScoped<IUserRepository, UserSqlRepository>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddControllers().AddNewtonsoftJson(options =>
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-);
-            services.AddSwaggerGen(x =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+            //services.AddSwaggerGen(x =>
+            //{
+            //    x.SwaggerDoc("v1", new OpenApiInfo { Title = "Saityno laboras API", Version = "v1" });
+            //});
+            //---------------------
+            services.AddSwaggerGen(options =>
             {
-                x.SwaggerDoc("v1", new OpenApiInfo { Title = "Saityno laboras API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "SaitynoAPI",
+                    //Description = ""
+                });
+                //options.DocInclusionPredicate((docName, description) => true);
+                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                options.OperationFilter<SecurityRequirementsOperationFilter>();
             });
+
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
