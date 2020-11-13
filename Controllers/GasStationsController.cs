@@ -91,7 +91,9 @@ namespace SaitynoLaboras.Controllers
             {
                 var gasStationMapped = _mapper.Map<GasStation>(gasStation);
                 _repository.PutGasStation(id, gasStationMapped);
-                return NoContent();
+
+                gasStation1 = _repository.GetGasStationById(id);
+                return Ok(_mapper.Map<GasStationReadDTO>(gasStation1));
             }
         }
 
@@ -126,7 +128,8 @@ namespace SaitynoLaboras.Controllers
             {
                 var gasStationMapped = _mapper.Map<GasStation>(gasStation);
                 _repository.PatchGasStation(id, gasStationMapped);
-                return NoContent();
+                gasStation1 = _repository.GetGasStationById(id);
+                return Ok(_mapper.Map<GasStationReadDTO>(gasStation1));
             }
         }
 

@@ -55,21 +55,33 @@ namespace SaitynoLaboras.Controllers
         public ActionResult<UserReadDTO> GetUserById(int id)
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
-            if (identity != null)
+            if (HttpContext.User.IsInRole(Policies.Admin))
             {
-                if (identity.FindFirst("Id").Value != id.ToString() && identity.RoleClaimType != Policies.Admin)
+                var user = _repository.GetUserById(id);
+                if (user == null)
                 {
-                    return Forbid();
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(_mapper.Map<UserReadDTO>(user));
                 }
             }
-            var user = _repository.GetUserById(id);
-            if (user == null)
+            else if (identity.FindFirst("Id").Value != id.ToString())
             {
-                return NotFound();
+                return Forbid();
             }
             else
             {
-                return Ok(_mapper.Map<UserReadDTO>(user));
+                var user = _repository.GetUserById(id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(_mapper.Map<UserReadDTO>(user));
+                }
             }
         }
 
@@ -78,10 +90,14 @@ namespace SaitynoLaboras.Controllers
         public ActionResult<User> PostUser(UserCreateDTO user)
         {
             var userMapped = _mapper.Map<User>(user);
+            if (userMapped.Role != Policies.User && userMapped.Role != Policies.Admin)
+            {
+                return BadRequest();
+            }
             if (userMapped.Role == Policies.Admin)
             {
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
-                if (identity != null && identity.RoleClaimType != Policies.Admin)
+                if (identity != null && !HttpContext.User.IsInRole(Policies.Admin))
                 {
                         return Forbid();
                 }
@@ -111,7 +127,7 @@ namespace SaitynoLaboras.Controllers
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             if (identity != null)
             {
-                if (identity.FindFirst("Id").Value != id.ToString() && identity.RoleClaimType != Policies.Admin)
+                if (identity.FindFirst("Id").Value != id.ToString() && !HttpContext.User.IsInRole(Policies.Admin))
                 {
                     return Forbid();
                 }
@@ -129,7 +145,8 @@ namespace SaitynoLaboras.Controllers
             {
                 var userMapped = _mapper.Map<User>(user);
                 _repository.PatchUser(id, userMapped);
-                return NoContent();
+                user1 = _repository.GetUserById(id);
+                return Ok(_mapper.Map<UserReadDTO>(user1));
             }
         }
 
@@ -147,7 +164,7 @@ namespace SaitynoLaboras.Controllers
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             if (identity != null)
             {
-                if (identity.FindFirst("Id").Value != id.ToString() && identity.RoleClaimType != Policies.Admin)
+                if (identity.FindFirst("Id").Value != id.ToString() && !HttpContext.User.IsInRole(Policies.Admin))
                 {
                     return Forbid();
                 }
@@ -165,7 +182,8 @@ namespace SaitynoLaboras.Controllers
             {
                 var userMapped = _mapper.Map<User>(user);
                 _repository.PutUser(id, userMapped);
-                return NoContent();
+                user1 = _repository.GetUserById(id);
+                return Ok(_mapper.Map<UserReadDTO>(user1));
             }
         }
 
@@ -183,7 +201,7 @@ namespace SaitynoLaboras.Controllers
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             if (identity != null)
             {
-                if (identity.FindFirst("Id").Value != id.ToString() && identity.RoleClaimType != Policies.Admin)
+                if (identity.FindFirst("Id").Value != id.ToString() && !HttpContext.User.IsInRole(Policies.Admin))
                 {
                     return Forbid();
                 }

@@ -45,7 +45,7 @@ namespace SaitynoLaboras.Controllers
 
         [Authorize(Policy = Policies.Admin)]
         [HttpPost("{GSid}/Prices/{Pid}")]
-        public ActionResult<Price> PostPrice(int GSid, int Pid, Price price)
+        public ActionResult<PriceCreateDTO> PostPrice(int GSid, int Pid, PriceCreateDTO price)
         {
             return BadRequest();
         }
@@ -121,7 +121,8 @@ namespace SaitynoLaboras.Controllers
 
                     return NotFound();
                 }
-                return NoContent();
+                foundPrice = _repository.GetPriceById(GSid, Pid);
+                return Ok(_mapper.Map<PriceReadDTO>(foundPrice));
             }
         }
 
@@ -156,7 +157,8 @@ namespace SaitynoLaboras.Controllers
                 {
                     return NotFound();
                 }
-                return NoContent();
+                foundPrice = _repository.GetPriceById(GSid, Pid);
+                return Ok(_mapper.Map<PriceReadDTO>(foundPrice));
             }
         }
 

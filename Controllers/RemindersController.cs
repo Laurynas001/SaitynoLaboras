@@ -155,7 +155,8 @@ namespace SaitynoLaboras.Controllers
 
                     return NotFound();
                 }
-                return NoContent();
+                foundReminder = _repository.GetReminderById(Uid, Rid);
+                return Ok(_mapper.Map<ReminderReadDTO>(foundReminder));
             }
         }
 
@@ -200,7 +201,8 @@ namespace SaitynoLaboras.Controllers
 
                     return NotFound();
                 }
-                return NoContent();
+                foundReminder = _repository.GetReminderById(Uid, Rid);
+                return Ok(_mapper.Map<ReminderReadDTO>(foundReminder));
             }
         }
 
