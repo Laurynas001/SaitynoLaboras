@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using SaitynoLaboras.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using SaitynoLaboras.Authentication_Authorization;
+using System.Security.Claims;
 
 namespace SaitynoLaboras.Controllers
 {
@@ -26,7 +27,7 @@ namespace SaitynoLaboras.Controllers
             _mapper = mapper;
         }
 
-        [Authorize]
+        [Authorize(Policy = Policies.Admin)]
         [HttpGet("/[controller]")]
         public ActionResult<IEnumerable<ReminderReadDTO>> GetAllReminders()
         {
@@ -46,7 +47,14 @@ namespace SaitynoLaboras.Controllers
         [HttpGet("{Uid}/[controller]")]
         public ActionResult<IEnumerable<ReminderReadDTO>> GetAllReminders(int Uid)
         {
-
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != Uid.ToString())
+                {
+                    return Forbid();
+                }
+            }
             var reminders = _repository.GetAllReminders(Uid).ToList();
             if (reminders.Count == 0)
             {
@@ -62,6 +70,14 @@ namespace SaitynoLaboras.Controllers
         [HttpGet("{Uid}/[controller]/{Rid}", Name="GetReminderById")]
         public ActionResult<ReminderReadDTO> GetReminderById(int Uid, int Rid)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != Uid.ToString())
+                {
+                    return Forbid();
+                }
+            }
             var reminder = _repository.GetReminderById(Uid, Rid);
             if (reminder == null)
             {
@@ -77,7 +93,14 @@ namespace SaitynoLaboras.Controllers
         [HttpPost("{Uid}/[controller]")]
         public ActionResult<ReminderCreateDTO> PostReminder(int Uid, ReminderCreateDTO reminder)
         {
-
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != Uid.ToString())
+                {
+                    return Forbid();
+                }
+            }
             var reminderModel = _mapper.Map<Reminder>(reminder);
             try
             {
@@ -103,6 +126,14 @@ namespace SaitynoLaboras.Controllers
         [HttpPut("{Uid}/[controller]/{Rid}")]
         public ActionResult PutReminder(int Uid, int Rid, ReminderUpdateDTO reminder)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != Uid.ToString())
+                {
+                    return Forbid();
+                }
+            }
             var foundReminder = _repository.GetReminderById(Uid, Rid);
             if (foundReminder == null)
             {
@@ -140,6 +171,14 @@ namespace SaitynoLaboras.Controllers
         [HttpPatch("{Uid}/[controller]/{Rid}")]
         public ActionResult PatchReminder(int Uid, int Rid, ReminderPartialUpdateDTO reminder)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != Uid.ToString())
+                {
+                    return Forbid();
+                }
+            }
             var foundReminder = _repository.GetReminderById(Uid, Rid);
             if (foundReminder == null)
             {
@@ -176,6 +215,14 @@ namespace SaitynoLaboras.Controllers
         [HttpDelete("{Uid}/[controller]/{Rid}")]
         public ActionResult<ReminderReadDTO> DeleteReminder(int Uid, int Rid)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != Uid.ToString())
+                {
+                    return Forbid();
+                }
+            }
             var reminder = _repository.GetReminderById(Uid, Rid);
             if (reminder == null)
             {
@@ -196,7 +243,7 @@ namespace SaitynoLaboras.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Policy = Policies.Admin)]
         [HttpDelete("{Uid}/[controller]")]
         public ActionResult<ReminderReadDTO> DeleteReminder(int Uid)
         {

@@ -35,7 +35,7 @@ namespace SaitynoLaboras.Controllers
             _configuration = configuration;
         }
 
-        [Authorize]
+        [Authorize(Policy = Policies.Admin)]
         [HttpGet]
         public ActionResult<IEnumerable<UserReadDTO>> GetAllUsers()
         {
@@ -54,6 +54,14 @@ namespace SaitynoLaboras.Controllers
         [HttpGet("{id}", Name = "GetUserById")]
         public ActionResult<UserReadDTO> GetUserById(int id)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != id.ToString() && identity.RoleClaimType != Policies.Admin)
+                {
+                    return Forbid();
+                }
+            }
             var user = _repository.GetUserById(id);
             if (user == null)
             {
@@ -70,6 +78,20 @@ namespace SaitynoLaboras.Controllers
         public ActionResult<User> PostUser(UserCreateDTO user)
         {
             var userMapped = _mapper.Map<User>(user);
+            if (userMapped.Role == Policies.Admin)
+            {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                if (identity != null && identity.RoleClaimType != Policies.Admin)
+                {
+                        return Forbid();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            userMapped.RefreshToken = "";
+            userMapped.RefreshTokenExpiryDate = DateTime.Now;
             _repository.PostUser(userMapped);
             var userReadDTO = _mapper.Map<UserReadDTO>(userMapped);
             return CreatedAtRoute(nameof(GetUserById), new { Id = userReadDTO.Id }, userReadDTO);
@@ -86,6 +108,14 @@ namespace SaitynoLaboras.Controllers
         [HttpPatch("{id}")]
         public ActionResult PatchUser(int id, UserPartialUpdateDTO user)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != id.ToString() && identity.RoleClaimType != Policies.Admin)
+                {
+                    return Forbid();
+                }
+            }
             var user1 = _repository.GetUserById(id);
             if (user1 == null)
             {
@@ -114,6 +144,14 @@ namespace SaitynoLaboras.Controllers
         [HttpPut("{id}")]
         public ActionResult PutUser(int id, UserUpdateDTO user)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != id.ToString() && identity.RoleClaimType != Policies.Admin)
+                {
+                    return Forbid();
+                }
+            }
             var user1 = _repository.GetUserById(id);
             if (user1 == null)
             {
@@ -142,6 +180,14 @@ namespace SaitynoLaboras.Controllers
         [HttpDelete("{id}")]
         public ActionResult<UserReadDTO> DeleteUser(int id)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                if (identity.FindFirst("Id").Value != id.ToString() && identity.RoleClaimType != Policies.Admin)
+                {
+                    return Forbid();
+                }
+            }
             var user = _repository.GetUserById(id);
             if (user == null)
             {

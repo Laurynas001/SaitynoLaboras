@@ -53,6 +53,7 @@ namespace SaitynoLaboras.Controllers
             }
             var claims = new List<Claim>
             {
+                new Claim("Id", user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Role, user.Role)
             };

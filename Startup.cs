@@ -60,7 +60,7 @@ namespace SaitynoLaboras
                     Title = "SaitynoAPI",
                     //Description = ""
                 });
-                //options.DocInclusionPredicate((docName, description) => true);
+                options.DocInclusionPredicate((docName, description) => true);
                 options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
                 {
                     Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
