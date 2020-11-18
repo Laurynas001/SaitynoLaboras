@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@500&display=swap");
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgb(100, 136, 15);
+  margin-top: 0;
+  font-family: "Big Shoulders Stencil Display", cursive;
+  font-size: 26px;
+  text-decoration: none;
+}
+
+body {
+  margin: 0px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-links {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  font-size: 24px;
+}
+
+.loginButton {
+  font-family: "Big Shoulders Stencil Display", cursive;
+  font-size: 24px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: rgba(76, 175, 80, 0.3);
+  color: black;
+}
+
+.loginButton:hover,
+.link:hover {
+  color: white;
+  border-color: yellow;
+  border-radius: 5px;
+}

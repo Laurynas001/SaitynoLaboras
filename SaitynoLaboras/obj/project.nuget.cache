@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BU/bF4/1oYC96wvReIhXS4jRJLlNWJDuWtyOv9bbf9OaNFN8e2d0rq0zwRBkYtjHBSzgk4I+qRAHHnGwCUfouw==",
+  "dgSpecHash": "SE87T7ClE3BMhoiI+5yBtFpdOWXvCAdj0cizMUWxtc+zOYdSGOkKd2j2Ev6wu/7RJPx2U+Dxps4GhLgadr5j1w==",
   "success": true,
-  "projectFilePath": "D:\\C_Extend\\Desktop\\Saityno taikomuju programu projektavimas\\L1\\SaitynoLaboras\\SaitynoLaboras.csproj",
+  "projectFilePath": "D:\\C_Extend\\Desktop\\Saityno taikomuju programu projektavimas\\Projektas\\SaitynoLaboras\\SaitynoLaboras.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MASTER\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\MASTER\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
