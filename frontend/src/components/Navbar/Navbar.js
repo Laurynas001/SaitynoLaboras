@@ -1,10 +1,8 @@
 import React, {useState} from 'react'; 
 import { Link } from 'react-router-dom';
 import './Navbar.css'; 
-import '../SideNavbar/SideNavbarButton';
-import SideNavbarButton from '../SideNavbar/SideNavbarButton';
 
-function Navbar() {
+function Navbar(props) {
     return (
         <nav className='navigationBar'>
             <Link to='/' className='navigationBarLogo'>
@@ -24,7 +22,6 @@ function Navbar() {
                     <li><button className='loginButton'>Prisijungti</button></li>
                 </Link>
             </ul>
-            <SideNavbarButton/>
         </nav>
     );
 }

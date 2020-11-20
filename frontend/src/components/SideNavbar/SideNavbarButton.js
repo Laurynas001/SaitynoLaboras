@@ -1,9 +1,9 @@
 import React from 'react';
 import './SideNavbarButton.css';
 
-function SideNavbarButton() {
+function SideNavbarButton(props) {
     return (
-        <button className='hamburgerButton'>
+        <button className='hamburgerButton' onClick={props.click}>
             <i className='fas fa-bars' />
         </button>
 
