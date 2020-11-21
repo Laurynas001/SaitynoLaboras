@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SaitynoLaboras.Authentication_Authorization;
@@ -25,7 +26,6 @@ namespace SaitynoLaboras.Controllers
             _repository = repository;
             _mapper = mapper;
         }
-
         [AllowAnonymous]
         [HttpGet]
         public ActionResult<IEnumerable<GasStationReadDTO>> GetAllGasStations()

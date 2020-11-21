@@ -37,6 +37,16 @@ namespace SaitynoLaboras
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:5001",
+                                            "http://localhost:3000");
+                    });
+            });
+
             services.AddDbContext<Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
             services.AddControllers();
             services.AddScoped<IGasStationRepository, GasStationSqlRepository>();
@@ -97,6 +107,7 @@ namespace SaitynoLaboras
                 config.AddPolicy(Policies.User, Policies.UserPolicy());
             });
             services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -117,7 +128,9 @@ namespace SaitynoLaboras
             {
                 option.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
             });
-            
+
+            app.UseCors();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -130,6 +143,7 @@ namespace SaitynoLaboras
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

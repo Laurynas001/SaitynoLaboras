@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './GasStations.css';
 import Axios from 'axios';
 
 function GasStations() {
-    const state = {
-        gasStations: []
-    }
+    const [gasStations, setGasStations] = useState([]);
 
-    function componentDidMount() {
-        Axios.get()
-    }
+    Axios.get(`https://localhost:5001/GasStations`).then(res => {
+        setGasStations(res.data);
+    });
+    
     return (
-        <div>This is gasStations</div>
+        <ul>
+            {
+                gasStations.map(gasStation => <li>{gasStation.id}</li>)
+            }
+        </ul>
     );
 }
 
