@@ -30,6 +30,22 @@
   align-items: center;
   margin: 25px;
   background-color: white;
+  transition: all 1s ease;
+}
+
+.outterButton {
+  border: 2px solid white;
+}
+
+.outterUsername:hover,
+.outterPassword:hover,
+.outterButton:hover {
+  border: 2px solid yellow;
+}
+
+.outterButton:active {
+  transition: none;
+  border: 2px solid green;
 }
 
 .usernameText,
@@ -48,13 +64,15 @@
 }
 
 .loginButton1 {
-  border: 2px solid white;
+  /* border: 2px solid white; */
+  border: none;
   color: white;
   background-color: black;
   border-radius: 80px;
   height: 35px;
   width: 240px;
   outline: none;
+  font-size: 18px;
 }
 
 .outterButton {

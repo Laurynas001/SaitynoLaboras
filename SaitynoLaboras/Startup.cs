@@ -43,7 +43,7 @@ namespace SaitynoLaboras
                     builder =>
                     {
                         builder.WithOrigins("https://localhost:5001",
-                                            "http://localhost:3000");
+                                            "http://localhost:3000").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
                     });
             });
 
