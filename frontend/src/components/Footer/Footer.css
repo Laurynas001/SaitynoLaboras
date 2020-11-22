@@ -1,0 +1,41 @@
+.container {
+  background-color: rgb(59, 160, 49);
+}
+.title {
+  color: black;
+  margin: 10px;
+}
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.col {
+  text-align: center;
+}
+
+.footerList {
+  list-style: none;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.gasPricer {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  width: 100%;
+  justify-content: space-around;
+}
+.gasPricer:before,
+.gasPricer:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 2px solid #000;
+  margin: auto;
+}
+
+.row1 {
+  text-align: center;
+  padding-bottom: 5px;
+}

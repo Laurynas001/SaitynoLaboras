@@ -6,6 +6,7 @@ import About from './components/About/About';
 import GasStations from './components/GasStation/GasStations';
 import Prices from './components/Prices/Prices';
 import Login from './components/Login/Login';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/prices' component={Prices} />
           <Route path='/login' component={Login} />
         </Switch>
+        <Footer/>
       </div>
     </Router>
   );
