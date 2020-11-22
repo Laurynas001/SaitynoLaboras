@@ -19,12 +19,32 @@ function GasStations() {
     }
     return (
         <div className='outterDiv'>
-        <div className='cards'>
-            {
-                gasStations.map(gasStation => Card(gasStation))
-            }
+            <div className='cards'>
+                {
+                    gasStations.map(gasStation => Card(gasStation))
+                }
+                {
+                    gasStations.map(gasStation => Card(gasStation))
+                }
+                 {
+                    gasStations.map(gasStation => Card(gasStation))
+                }
+                 {
+                    gasStations.map(gasStation => Card(gasStation))
+                }
+                 {
+                    gasStations.map(gasStation => Card(gasStation))
+                }
+
+             {
+                    gasStations.map(gasStation => Card(gasStation))
+                }
+                 {
+                    gasStations.map(gasStation => Card(gasStation))
+                }
+              
             </div>
-            </div>
+        </div>
             );
         }
 
