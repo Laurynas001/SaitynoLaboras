@@ -7,7 +7,7 @@ function Footer() {
             <div className='container'>
                 <div className='row'>
                     <div className='col'>
-                        <h4 className='title'>GasPricer</h4>
+                        <h3 className='footerTitle'>GasPricer</h3>
                         <ul className='footerList'>
                             <li>+37067895456</li>
                             <li>Kaunas, Lietuva</li>
@@ -15,7 +15,7 @@ function Footer() {
                         </ul>
                     </div>
                     <div className='col'>
-                        <h4 className='title'>Sek mus</h4>
+                        <h3 className='footerTitle'>Sek mus</h3>
                         <ul className='footerList'>
                             <li>Facebook</li>
                             <li>Twitter</li>
@@ -23,7 +23,7 @@ function Footer() {
                         </ul>
                     </div>
                     <div className='col'>
-                        <h4 className='title'>Pagalba</h4>
+                        <h3 className='footerTitle'>Pagalba</h3>
                         <ul className='footerList'>
                             <li>Susisiek su mumis</li>
                             <li>Privatumo politika</li>
@@ -31,9 +31,9 @@ function Footer() {
                         </ul>
                     </div>
                 </div>
-                <h1 className='gasPricer'>GasPricer</h1>
+                <h3 className='gasPricer'>GasPricer</h3>
                 <div className='row1'>
-                    <p>
+                    <p className='paragraph'>
                         &copy;{new Date().getFullYear()} GasPricer | Visos teisės saugomos | Sąlygos | Privatumas
                     </p>
                 </div>

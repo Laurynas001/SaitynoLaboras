@@ -1,12 +1,8 @@
 .parentDiv {
-  height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(../../Pictures/mainImage.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 100%;
 }
 
 .loginComponent {
@@ -41,9 +37,14 @@
   font-size: 15px;
   border: 0px solid black;
   width: 60%;
-  height: 34px;
+  height: 33px;
   outline: none;
   margin-left: 5px;
+}
+
+.title {
+  font-size: 30px;
+  color: white;
 }
 
 .loginButton1 {
@@ -58,9 +59,4 @@
 
 .outterButton {
   background-color: black;
-}
-
-.title {
-  font-size: 30px;
-  color: white;
 }

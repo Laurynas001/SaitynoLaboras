@@ -1,9 +1,14 @@
-.container {
-  background-color: rgb(59, 160, 49);
+.mainFooter {
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  bottom: -200px;
+  width: 100%;
 }
-.title {
+
+.footerTitle {
   color: black;
   margin: 10px;
+  font-size: 20px;
 }
 .row {
   display: flex;
@@ -22,10 +27,10 @@
 
 .gasPricer {
   display: flex;
-  flex-direction: row;
-  margin: 0px;
+  margin-top: 5px;
+  padding: 0px;
   width: 100%;
-  justify-content: space-around;
+  justify-content: center;
 }
 .gasPricer:before,
 .gasPricer:after {
@@ -37,5 +42,9 @@
 
 .row1 {
   text-align: center;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+.paragraph {
+  margin: 0px;
 }
