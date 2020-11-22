@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './GasStations.css';
 import Axios from 'axios';
+import Card from './GasStationCard';
 
 function GasStations() {
     const [gasStations, setGasStations] = useState([]);
@@ -10,12 +11,12 @@ function GasStations() {
     });
     
     return (
-        <ul>
+        <div className='cards'>
             {
-                gasStations.map(gasStation => <li>{gasStation.id}</li>)
+                gasStations.map(gasStation => Card(gasStation))
             }
-        </ul>
-    );
-}
+        </div>
+            );
+        }
 
 export default GasStations;
