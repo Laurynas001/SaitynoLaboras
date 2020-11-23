@@ -7,6 +7,7 @@ import GasStations from './components/GasStation/GasStations';
 import Prices from './components/Prices/Prices';
 import Login from './components/Login/Login';
 import Footer from './components/Footer/Footer';
+import Logout from './components/Logout/Logout';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/gasStations' component={GasStations} />
           <Route path='/prices' component={Prices} />
           <Route path='/login' component={Login} />
+          <Route path='/logout' component={Logout} />
         </Switch>
         <Footer/>
       </div>

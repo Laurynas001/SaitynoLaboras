@@ -10,12 +10,10 @@ function GasStations() {
     function getGasStations() {
         Axios.get(`https://localhost:5001/GasStations`).then(res => {
             setGasStations(res.data);
-            console.log('dsd');
         });
     }
     if (gasStations.length == 0) {
         getGasStations();
-        console.log('dffd')
     }
     return (
         <div className='outterDiv'>
@@ -23,26 +21,6 @@ function GasStations() {
                 {
                     gasStations.map(gasStation => Card(gasStation))
                 }
-                {
-                    gasStations.map(gasStation => Card(gasStation))
-                }
-                 {
-                    gasStations.map(gasStation => Card(gasStation))
-                }
-                 {
-                    gasStations.map(gasStation => Card(gasStation))
-                }
-                 {
-                    gasStations.map(gasStation => Card(gasStation))
-                }
-
-             {
-                    gasStations.map(gasStation => Card(gasStation))
-                }
-                 {
-                    gasStations.map(gasStation => Card(gasStation))
-                }
-              
             </div>
         </div>
             );
