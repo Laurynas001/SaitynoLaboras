@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import Axios from 'axios';
-import Cookie from 'js-cookie';
+import Axios from 'axios';  
+// import Cookie from 'js-cookie';
+import Cookies from 'universal-cookie';
 import './Login.css';
 import { Redirect } from "react-router-dom";
 
 function Login() {
+    const cookies = new Cookies();
+
     const state = {
         username: '',
         password: ''
@@ -20,11 +23,11 @@ function Login() {
     
     function handleLogin() {
         Axios.post(`https://localhost:5001/Login`, state).then(res => {
-            Cookie.set("accessToken", res.data.accessToken);
-            Cookie.set("refreshToken", res.data.refreshToken);
+            cookies.set("accessToken", res.data.accessToken);
+            cookies.set("refreshToken", res.data.refreshToken);
             console.log(res);
-            console.log(Cookie.get("accessToken"));
-            console.log(Cookie.get("refreshToken"));
+            console.log(cookies.get("accessToken"));
+            console.log(cookies.get("refreshToken"));
         });
     }
 

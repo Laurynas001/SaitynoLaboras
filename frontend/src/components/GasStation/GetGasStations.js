@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './GetGasStations.css';
 import Axios from 'axios';
 import Card from './GasStationCard';
-import Cookie from 'js-cookie';
 
 function GetGasStations() {
     const [gasStations, setGasStations] = useState([]);

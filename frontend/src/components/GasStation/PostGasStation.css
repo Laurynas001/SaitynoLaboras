@@ -8,3 +8,64 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.postGasStationTitle {
+  font-size: 30px;
+  color: white;
+  margin: 20px;
+}
+
+.postGasStationInnerDiv {
+  border: 3px solid rgb(10, 160, 5);
+  border-radius: 70px;
+  margin: auto;
+  padding: 15px;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 0 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.postGasStationInputDiv,
+.postGasStationButtonDiv {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 25px;
+  padding: 0;
+}
+
+.postGasStationInput {
+  border: 2px solid black;
+  border-radius: 80px;
+  height: 35px;
+  width: 240px;
+  font-size: 15px;
+  outline: none;
+  text-align: center;
+  padding: 0;
+  transition: all 1s ease;
+}
+
+.postGasStationButton {
+  border: 2px solid black;
+  color: white;
+  background-color: black;
+  border-radius: 80px;
+  height: 35px;
+  width: 240px;
+  outline: none;
+  font-size: 18px;
+  transition: all 1s ease;
+}
+
+.postGasStationInput:hover,
+.postGasStationButton:hover {
+  border: 2px solid yellow;
+}
+
+.postGasStationButton:active {
+  transition: none;
+  border: 2px solid green;
+}

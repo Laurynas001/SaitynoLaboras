@@ -1,11 +1,13 @@
 import React from 'react';
-import Cookie from 'js-cookie';
+import Cookies from 'universal-cookie';
 import { Redirect } from "react-router-dom";
 
 function Logout() {
+    const cookies = new Cookies();
+
     function deleteTokens() {
-        Cookie.remove('accessToken');
-        Cookie.remove('refreshToken');
+        cookies.remove('accessToken');
+        cookies.remove('refreshToken');
     }
 
     deleteTokens()

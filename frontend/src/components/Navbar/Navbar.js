@@ -1,19 +1,20 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom';
 import './Navbar.css'; 
-import Cookie from 'js-cookie';
+import Cookies from 'universal-cookie';
 
 function Navbar(props) {
+    const cookies = new Cookies();
+
     function isLoggedIn() {
-        if (Cookie.get('accessToken'))
+        if (cookies.get('accessToken') == null)
         {
             console.log('true')
-            console.log(Cookie.get('accessToken'))
+            console.log(cookies.get('accessToken'))
             return true;
         } else {
             console.log('false')
-            console.log(Cookie.get('accessToken').length)
-            console.log(Cookie.get('accessToken'))  
+            console.log(cookies.get('accessToken'))  
             return false;
         }
     }
