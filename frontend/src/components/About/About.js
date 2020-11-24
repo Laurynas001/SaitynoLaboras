@@ -3,7 +3,7 @@ import './About.css';
 
 function About() {
     return (
-        <div></div>
+        <div className='aboutOutterDiv'></div>
     );
 }
 

@@ -3,7 +3,7 @@ import './Prices.css';
 
 function Prices() {
     return (
-        <div></div>
+        <div className='pricesOutterDiv'></div>
     );
 }
 

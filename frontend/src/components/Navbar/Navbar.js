@@ -5,7 +5,7 @@ import Cookie from 'js-cookie';
 
 function Navbar(props) {
     function isLoggedIn() {
-        if (Cookie.get('accessToken').length < 5)
+        if (Cookie.get('accessToken'))
         {
             console.log('true')
             console.log(Cookie.get('accessToken'))
@@ -13,7 +13,7 @@ function Navbar(props) {
         } else {
             console.log('false')
             console.log(Cookie.get('accessToken').length)
-            console.log(Cookie.get('accessToken'))
+            console.log(Cookie.get('accessToken'))  
             return false;
         }
     }
@@ -27,7 +27,7 @@ function Navbar(props) {
                 <Link to='/about' className='navigationBarLink'>
                     <li>Apie mus</li>
                 </Link>
-                <Link to='/gasStations' className='navigationBarLink'>
+                <Link to='/getGasStations' className='navigationBarLink'>
                     <li>Degalinės</li>
                 </Link>
                 <Link to='/prices' className='navigationBarLink'>
@@ -41,8 +41,10 @@ function Navbar(props) {
                     <Link to='/logout' className='navigationBarLink'>
                         <li><button className='loginButton'>Atsijungti</button></li>
                     </Link>
-                    
                 }
+                <Link to='/postGasStations' className='navigationBarLink'>
+                    <li>Įkelti degalinę</li>
+                </Link>
             </ul>
         </nav>
     );

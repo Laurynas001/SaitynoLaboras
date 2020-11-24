@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import './GasStations.css';
+import './GetGasStations.css';
 import Axios from 'axios';
 import Card from './GasStationCard';
 import Cookie from 'js-cookie';
 
-function GasStations() {
+function GetGasStations() {
     const [gasStations, setGasStations] = useState([]);
 
     function getGasStations() {
@@ -26,4 +26,4 @@ function GasStations() {
             );
         }
 
-export default GasStations;
+export default GetGasStations;

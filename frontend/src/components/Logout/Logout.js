@@ -4,8 +4,8 @@ import { Redirect } from "react-router-dom";
 
 function Logout() {
     function deleteTokens() {
-        Cookie.set('accessToken', null);
-        Cookie.set('refreshToken', null);
+        Cookie.remove('accessToken');
+        Cookie.remove('refreshToken');
     }
 
     deleteTokens()
