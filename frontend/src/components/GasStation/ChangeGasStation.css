@@ -1,4 +1,4 @@
-.postGasStationOutterDiv {
+.changeGasStationOutterDiv {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,13 +9,7 @@
   background-repeat: no-repeat;
 }
 
-.postGasStationTitle {
-  font-size: 30px;
-  color: white;
-  margin: 20px;
-}
-
-.postGasStationInnerDiv {
+.changeGasStationInnerDiv {
   border: 3px solid rgb(10, 160, 5);
   border-radius: 70px;
   margin: auto;
@@ -29,16 +23,17 @@
   margin-bottom: 70px;
 }
 
-.postGasStationInputDiv,
-.postGasStationButtonDiv {
+.changeGasStationInputDiv,
+.changeGasStationButtonDiv {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
   margin: 25px;
   padding: 0;
 }
 
-.postGasStationInput {
+.changeGasStationInput {
   border: 2px solid black;
   border-radius: 80px;
   height: 35px;
@@ -50,7 +45,13 @@
   transition: all 1s ease;
 }
 
-.postGasStationButton {
+.inputLabel {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.changeGasStationButton {
   border: 2px solid black;
   color: white;
   background-color: black;
@@ -62,12 +63,34 @@
   transition: all 1s ease;
 }
 
-.postGasStationInput:hover,
-.postGasStationButton:hover {
+.changeGasStationInput:hover,
+.changeGasStationButton:hover {
   border: 2px solid yellow;
 }
 
-.postGasStationButton:active {
+.changeGasStationButton:active {
   transition: none;
   border: 2px solid green;
+}
+
+.fa-cog {
+  font-size: 24px;
+  margin: 5px;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.8);
+  transition: 1s ease-in-out;
+}
+
+.fa-cog:hover {
+  color: yellow;
+}
+
+.fa-cog:active {
+  transition: none;
+  border: 2px solid green;
+}
+
+.gasStationChangeValues {
+  text-align: right;
 }
