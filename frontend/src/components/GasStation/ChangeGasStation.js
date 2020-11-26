@@ -44,23 +44,15 @@ class ChangeGasStation extends React.Component {
     }
 
     handleLatitudeChange(value) {
-        console.log(this)
         this.setState({
             latitude: value,
         })
     }
 
     changeGasStation() {
-        Axios.put(`https://localhost:5001/GasStations`, this.state, config).then(res => {
+        Axios.put(`https://localhost:5001/GasStations/`+this.props.location.state.id, this.state, config).then(res => {
             console.log(res.data);
         });
-        this.setState({
-            name: '',
-            city: '',
-            address: '',
-            longtitude: '',
-            latitude: ''
-        })
     }
 
     render() {

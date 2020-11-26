@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer';
 import Logout from './components/Logout/Logout';
 import PostGasStation from './components/GasStation/PostGasStation';
 import ChangeGasStation from './components/GasStation/ChangeGasStation';
+import DeleteGasStation from './components/GasStation/DeleteGasStation';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/logout' component={Logout} />
           <Route path='/postGasStations' component={PostGasStation} />
-          <Route path='/changeGasStation' component={ChangeGasStation}/>
+          <Route path='/changeGasStation' component={ChangeGasStation} />
         </Switch>
         <Footer/>
       </div>

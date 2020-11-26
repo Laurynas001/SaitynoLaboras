@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'; 
 import Cookies from 'universal-cookie';
+import Login from '../Login/Login';
    
 const cookies = new Cookies();
     
-class Navbar extends React.Component {
+class Navbar extends React.Component {    
     state = {
         isLoggedIn: false
     }
@@ -13,7 +14,6 @@ class Navbar extends React.Component {
     isLoggedIn() {
         if (cookies.get('accessToken') != null)
         {
-
             return true;
         } else {
             return false;
@@ -21,6 +21,7 @@ class Navbar extends React.Component {
 }
     render() {
         return (
+              <Login parentCallback = {this.callbackFunction}/>,
             <nav className='navigationBar'>
                 <Link to='/' className='navigationBarLogo'>
                     GasPricer

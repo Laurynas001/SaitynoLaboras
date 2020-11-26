@@ -8,11 +8,12 @@ function Logout() {
     function deleteTokens() {
         cookies.remove('accessToken');
         cookies.remove('refreshToken');
+        window.location.href = "/";
     }
 
     deleteTokens()
     return (    
-        <Redirect to='/' />
+        <Redirect to='/about' />
     );
 }
 

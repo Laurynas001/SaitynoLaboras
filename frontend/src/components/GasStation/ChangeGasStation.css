@@ -73,7 +73,9 @@
   border: 2px solid green;
 }
 
-.fa-cog {
+.fa-cog,
+.fa-trash-alt {
+  padding: 2px;
   font-size: 24px;
   margin: 5px;
   border: 2px solid white;
@@ -82,11 +84,13 @@
   transition: 1s ease-in-out;
 }
 
-.fa-cog:hover {
+.fa-cog:hover,
+.fa-trash-alt:hover {
   color: yellow;
 }
 
-.fa-cog:active {
+.fa-cog:active,
+.fa-trash-alt:active {
   transition: none;
   border: 2px solid green;
 }

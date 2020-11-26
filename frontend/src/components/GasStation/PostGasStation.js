@@ -44,7 +44,6 @@ class PostGasStation extends React.Component {
     }
 
     handleLatitudeChange(value) {
-        console.log(this)
         this.setState({
             latitude: value,
         })
