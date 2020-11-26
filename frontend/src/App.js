@@ -11,6 +11,7 @@ import Logout from './components/Logout/Logout';
 import PostGasStation from './components/GasStation/PostGasStation';
 import ChangeGasStation from './components/GasStation/ChangeGasStation';
 import DeleteGasStation from './components/GasStation/DeleteGasStation';
+import GetPrices from './components/Prices/GetPrices';
 
 function App() {
   return (
@@ -21,11 +22,12 @@ function App() {
           <Route path='/' exact component={GetGasStations}/>
           <Route path='/about' component={About} />
           <Route path='/getGasStations' component={GetGasStations} />
-          <Route path='/prices' component={Prices} />
+          {/* <Route path='/prices' component={Prices} /> */}
           <Route path='/login' component={Login} />
           <Route path='/logout' component={Logout} />
           <Route path='/postGasStations' component={PostGasStation} />
           <Route path='/changeGasStation' component={ChangeGasStation} />
+          <Route path='/prices' component={GetPrices} />
         </Switch>
         <Footer/>
       </div>

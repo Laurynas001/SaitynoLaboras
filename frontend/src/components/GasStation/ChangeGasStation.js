@@ -53,7 +53,7 @@ class ChangeGasStation extends React.Component {
         Axios.put(`https://localhost:5001/GasStations/`+this.props.location.state.id, this.state, config).then(res => {
             console.log(res.data);
         });
-    }
+    };
 
     render() {
         return (

@@ -1,6 +1,5 @@
 import React from 'react';
 import './GasStationCard.css';
-import ChangeGasStation from './ChangeGasStation';  
 import DeleteGasStation from './DeleteGasStation';
 import { Link } from 'react-router-dom';
 
@@ -18,6 +17,9 @@ function GasStationCard(props) {
                 <div className='gasStationParam' key={props.id + 'address'}>{props.address}</div>
                 <div className='gasStationParam' key={props.id + 'longtitude'}>{props.longtitude}</div>
                 <div className='gasStationParam' key={props.id + 'latitude'}>{props.latitude}</div>
+                <Link to={{pathname: '/prices', state: props}} className='iconLink'>
+                    <p>dfdfd</p>
+                </Link>
         </div>
     );
 }
