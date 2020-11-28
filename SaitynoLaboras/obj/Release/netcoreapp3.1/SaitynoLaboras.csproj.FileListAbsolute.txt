@@ -163,11 +163,6 @@ D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\o
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\L1\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.MvcApplicationPartsAssemblyInfo.cache
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\appsettings.Development.json
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\appsettings.json
-D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\Properties\launchSettings.json
-D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\Properties\serviceDependencies.json
-D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\Properties\serviceDependencies.SaitynoLaboras20201008165604 - Web Deploy.json
-D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\SaitynoLaboras20201008165604 - Web Deploy\mssql1.arm.json
-D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\SaitynoLaboras20201008165604 - Web Deploy\profile.arm.json
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\SaitynoLaboras.exe
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\SaitynoLaboras.deps.json
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\bin\Release\netcoreapp3.1\SaitynoLaboras.runtimeconfig.json
@@ -246,3 +241,4 @@ D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLa
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.dll
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.pdb
 D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\obj\Release\netcoreapp3.1\SaitynoLaboras.genruntimeconfig.cache
+D:\C_Extend\Desktop\Saityno taikomuju programu projektavimas\Projektas\SaitynoLaboras\obj\Release\netcoreapp3.1\scopedcss\bundle\SaitynoLaboras.styles.css

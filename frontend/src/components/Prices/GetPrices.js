@@ -120,7 +120,7 @@ class GetPrices extends React.Component {
         return (
             <div className='pricesOutterDiv'>
                 <div className='pricesInnerDiv'>
-                    {/* <CanvasJSChart options={options} onRef={ref => this.chart = ref}/> */}
+                    <CanvasJSChart className='pricesChart' options={options} onRef={ref => this.chart = ref} />
                 </div>
 		    </div>
 		);

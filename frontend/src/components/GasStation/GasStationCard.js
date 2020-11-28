@@ -7,8 +7,8 @@ function GasStationCard(props) {
     return (
         <div className='card' key={props.id + 'card'}>
                 <div className='gasStationChangeValues' key={props.id + 'changeValues'}>
-                    <Link to={{pathname: '/changeGasStation', state: props}} className='iconLink'>
-                            <i className="fas fa-cog" />
+                <Link to={{pathname: '/changeGasStation', state: props}} className='iconLink'>
+                    <i className="fas fa-cog" />
                 </Link>
                 <i className="fas fa-trash-alt" onClick={event => DeleteGasStation(props)}/>
                 </div>
@@ -17,9 +17,11 @@ function GasStationCard(props) {
                 <div className='gasStationParam' key={props.id + 'address'}>{props.address}</div>
                 <div className='gasStationParam' key={props.id + 'longtitude'}>{props.longtitude}</div>
                 <div className='gasStationParam' key={props.id + 'latitude'}>{props.latitude}</div>
-                <Link to={{pathname: '/prices', state: props}} className='iconLink'>
-                    <p>dfdfd</p>
-                </Link>
+                <div className='linkToPricesDiv'>
+                    <Link to={{pathname: '/prices', state: props}} className='pricesLink'>
+                        Kainos
+                    </Link>
+                </div>
         </div>
     );
 }

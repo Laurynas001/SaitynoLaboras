@@ -10,9 +10,7 @@
 }
 
 .pricesInnerDiv {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-around;
-  min-height: 100%;
-  width: 60%;
+  width: 50%;
+  border: 2px solid black;
+  box-shadow: 0 0 20px;
 }

@@ -14,3 +14,29 @@
   display: block;
   justify-content: space-around;
 }
+
+.linkToPricesDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.pricesLink {
+  border: 2px solid white;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+  transition: all 1s ease;
+}
+
+.pricesLink:hover {
+  border: 2px solid yellow;
+  color: white;
+}
+
+.pricesLink:active {
+  transition: none;
+  border: 2px solid green;
+}
