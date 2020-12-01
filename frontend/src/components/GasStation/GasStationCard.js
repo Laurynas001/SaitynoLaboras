@@ -11,12 +11,27 @@ function GasStationCard(props) {
                     <i className="fas fa-cog" />
                 </Link>
                 <i className="fas fa-trash-alt" onClick={event => DeleteGasStation(props)}/>
-                </div>
+            </div>
+            <div className='titleInputPair'>
+                <div className='gasStationParamTitle'>Degalinės pavadinimas:</div>
                 <div className='gasStationParam' key={props.id + 'name'}>{props.name}</div>
+            </div>
+            <div className='titleInputPair'>
+                <div className='gasStationParamTitle'>Miestas:</div>
                 <div className='gasStationParam' key={props.id + 'city'}>{props.city}</div>
-                <div className='gasStationParam' key={props.id + 'address'}>{props.address}</div>
-                <div className='gasStationParam' key={props.id + 'longtitude'}>{props.longtitude}</div>
+            </div>
+            <div className='titleInputPair'>
+             <div className='gasStationParamTitle'>Gatvė:</div>
+            <div className='gasStationParam' key={props.id + 'address'}>{props.address}</div>
+            </div>
+            <div className='titleInputPair'>
+             <div className='gasStationParamTitle'>Ilguma:</div>
+            <div className='gasStationParam' key={props.id + 'longtitude'}>{props.longtitude}</div>
+            </div>
+            <div className='titleInputPair'>
+             <div className='gasStationParamTitle'>Platuma:</div>
                 <div className='gasStationParam' key={props.id + 'latitude'}>{props.latitude}</div>
+                </div>
                 <div className='linkToPricesDiv'>
                     <Link to={{pathname: '/prices', state: props}} className='pricesLink'>
                         Kainos

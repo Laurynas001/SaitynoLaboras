@@ -12,6 +12,7 @@ import PostGasStation from './components/GasStation/PostGasStation';
 import ChangeGasStation from './components/GasStation/ChangeGasStation';
 import DeleteGasStation from './components/GasStation/DeleteGasStation';
 import GetPrices from './components/Prices/GetPrices';
+import GetReminder from './components/Reminder/GetReminder';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/postGasStations' component={PostGasStation} />
           <Route path='/changeGasStation' component={ChangeGasStation} />
           <Route path='/prices' component={GetPrices} />
+          <Route path='/reminders' component={GetReminder}/>
         </Switch>
         <Footer/>
       </div>

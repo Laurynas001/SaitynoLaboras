@@ -25,14 +25,13 @@ class GetPrices extends React.Component {
        prices: null
    }
    
-    	componentDidMount(){
-            var chart = this.chart;
-        if (this.state.prices == null) {
-            Axios.get(`https://localhost:5001/GasStations/` + this.props.location.state.id + `/Prices`, config).then(res => {
+    componentDidMount(){
+        var chart = this.chart;
+            Axios.get(`https://localhost:5001/GasStations/` + this.props.location.state.id + `/Prices`, config)
+            .then(res => {
                 this.setState({
                     prices: res.data
                 })
-                console.log(this.state)
                 for (var i = 0; i < this.state.prices.length; i++) {
                     dataPointsA98.push({
                         x: new Date(this.state.prices[i].date),
@@ -58,12 +57,8 @@ class GetPrices extends React.Component {
 			}
 			    chart.render();
                 })
-            };
-            this.setState({
-                prices: null
-            })
-            console.log(this.state.prices)
-};
+
+    };
 
     render() {
         const options = {
@@ -120,7 +115,7 @@ class GetPrices extends React.Component {
         return (
             <div className='pricesOutterDiv'>
                 <div className='pricesInnerDiv'>
-                    <CanvasJSChart className='pricesChart' options={options} onRef={ref => this.chart = ref} />
+                    <CanvasJSChart options={options} onRef={ref => this.chart = ref} />
                 </div>
 		    </div>
 		);

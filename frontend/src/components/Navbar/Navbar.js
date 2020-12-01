@@ -33,9 +33,13 @@ class Navbar extends React.Component {
                     <Link to='/getGasStations' className='navigationBarLink'>
                         <li>Degalinės</li>
                     </Link>
-                    {/* <Link to='/prices' className='navigationBarLink'>
-                        <li>Kainos</li>
-                    </Link> */}
+                    {this.isLoggedIn() ?
+                        <Link to='/reminders' className='navigationBarLink'>
+                            <li>Priminimai</li>
+                        </Link>
+                        :
+                        <div></div>
+                    }
                     {this.isLoggedIn() ?
                         <Link to='/logout' className='navigationBarLink'>
                             <li><button className='loginButton'>Atsijungti</button></li>
@@ -45,6 +49,7 @@ class Navbar extends React.Component {
                             <li><button className='loginButton'>Prisijungti</button></li>
                         </Link>
                     }
+ 
                 </ul>
             </nav>
         );

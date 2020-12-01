@@ -40,3 +40,15 @@
   transition: none;
   border: 2px solid green;
 }
+
+.titleInputPair {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+}
+
+.gasStationParamTitle {
+  display: block;
+  margin: 5px;
+}
