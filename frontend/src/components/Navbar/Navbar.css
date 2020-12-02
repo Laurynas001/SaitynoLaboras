@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: rgba(100, 136, 15, 0.5);
+  background: rgba(100, 136, 15, 1);
   margin-top: 0;
   font-family: "Big Shoulders Stencil Display", cursive;
   font-size: 26px;
@@ -13,6 +13,7 @@
   position: fixed;
   top: 0px;
   width: 100%;
+  z-index: 2;
 }
 
 body {

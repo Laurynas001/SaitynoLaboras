@@ -2,7 +2,7 @@
   border: 2px solid black;
   border-radius: 10px;
   box-shadow: 0 0 10px;
-  min-width: 150px;
+  min-width: 280px;
   min-height: 100px;
   text-align: center;
   margin: 20px;
@@ -17,26 +17,47 @@
 
 .linkToPricesDiv {
   display: flex;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 10px;
   justify-content: center;
+  background-color: black;
+  border-radius: 80px;
 }
 
 .pricesLink {
-  border: 2px solid white;
-  border-radius: 5px;
-  color: black;
+  width: 35%;
+  border: 2px solid black;
+  border-radius: 80px;
+  background-color: black;
+  color: white;
   text-decoration: none;
   padding: 5px;
-  margin: 5px;
+  font-size: 20px;
+  transition: all 1s ease;
+  text-align: center;
+}
+
+.reminderLink {
+  width: 65%;
+  border: 2px solid black;
+  border-radius: 80px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 5px;
   font-size: 20px;
   transition: all 1s ease;
 }
 
-.pricesLink:hover {
-  border: 2px solid yellow;
-  color: white;
+.pricesLink:hover,
+.reminderLink:hover {
+  color: black;
+  background-color: white;
 }
 
-.pricesLink:active {
+.pricesLink:active,
+.reminderLink:active {
   transition: none;
   border: 2px solid green;
 }
@@ -46,9 +67,31 @@
   justify-content: center;
   text-align: center;
   font-size: 20px;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 80px;
+  margin: 5px;
+  padding: 1px;
 }
 
 .gasStationParamTitle {
   display: block;
   margin: 5px;
+}
+
+.createReminderButton {
+  border: 2px solid white;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+  padding: 5px;
+  margin: 5px;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 1s ease;
+}
+
+.createReminderButton:hover {
+  border: 2px solid yellow;
+  color: white;
 }

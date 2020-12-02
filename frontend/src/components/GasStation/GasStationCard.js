@@ -1,17 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './GasStationCard.css';
 import DeleteGasStation from './DeleteGasStation';
 import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import GetPrices from '../Prices/GetPrices';
+
+
+const cookies = new Cookies();
+
+function isAdmin() {
+    if (cookies.get('role') == 'Admin') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function isUser() {
+    if (cookies.get('role') == 'User') {
+        console.log(cookies.get('role'))
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 function GasStationCard(props) {
+    //const [showModal, setState] = useState(false)
+
     return (
         <div className='card' key={props.id + 'card'}>
-                <div className='gasStationChangeValues' key={props.id + 'changeValues'}>
+            {isAdmin() ?
+            <div className='gasStationChangeValues' key={props.id + 'changeValues'}>
                 <Link to={{pathname: '/changeGasStation', state: props}} className='iconLink'>
                     <i className="fas fa-cog" />
                 </Link>
                 <i className="fas fa-trash-alt" onClick={event => DeleteGasStation(props)}/>
             </div>
+                    :
+            <div></div>
+            }
             <div className='titleInputPair'>
                 <div className='gasStationParamTitle'>Degalinės pavadinimas:</div>
                 <div className='gasStationParam' key={props.id + 'name'}>{props.name}</div>
@@ -36,7 +66,14 @@ function GasStationCard(props) {
                     <Link to={{pathname: '/prices', state: props}} className='pricesLink'>
                         Kainos
                     </Link>
-                </div>
+                    {isUser() ?
+                    <Link to={{pathname: '/postReminder', state: props}} className='reminderLink'>
+                        Sukurti priminimą
+                    </Link>
+                    :
+            <div></div>
+            }
+            </div>
         </div>
     );
 }

@@ -8,6 +8,8 @@ function Logout() {
     function deleteTokens() {
         cookies.remove('accessToken');
         cookies.remove('refreshToken');
+        cookies.remove('userId');
+        cookies.remove('role');
         window.location.href = "/";
     }
 

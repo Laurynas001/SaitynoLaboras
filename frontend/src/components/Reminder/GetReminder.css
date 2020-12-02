@@ -8,3 +8,13 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.reminderCardInnerDiv {
+  margin-top: 70px;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  min-height: 100%;
+  width: 60%;
+  text-align: center;
+}

@@ -2,38 +2,38 @@ import React from 'react';
 import Cookies from 'universal-cookie';
 import Axios from 'axios';
 import ReminderCard from './ReminderCard';
+import './GetReminder.css';
 
 const cookies = new Cookies();
 const config = {
         headers: {
-            'Authorization': 'Bearer ' + cookies.get('accessToken')
-        }
+            'Authorization': 'Bearer ' + cookies.get('accessToken')        }
 }
 
 class GetReminder extends React.Component {
      state = {
-       reminders: null
+       reminders: []
    }
    
     componentDidMount() {
-        var chart = this.chart;
-        Axios.get(`https://localhost:5001/Users/` + this.props.location.state.id + `/Reminders`, config)
+        Axios.get(`https://localhost:5001/Users/` + cookies.get('userId') + `/Reminders`, config)
             .then(res => {
                 this.setState({
                     reminders: res.data
                 })
             })
+        console.log(cookies.get('role'))
+        
     };
-
 
 
     render() {
         return (
             <div className='outterDiv'>
-                <div className='innerDiv'>
+                <div className='reminderCardInnerDiv'>
                 {
-                    reminders.map(reminder => ReminderCard(gasStation))
-                }           
+                    this.state.reminders.map(reminder => ReminderCard(reminder))
+                }  
                 </div>
             </div> 
         );

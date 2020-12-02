@@ -3,6 +3,9 @@ import Axios from 'axios';
 import Cookies from 'universal-cookie';
 import './GetPrices.css';
 import CanvasJSReact from '../../lib/canvasjs.react';
+import ReactDom from 'react-dom';
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -19,14 +22,17 @@ const dataPointsA95 = [];
 const dataPointsD = [];
 const dataPointsDz = [];
 const dataPointsGas = [];
+    
+
 
 class GetPrices extends React.Component {
     state = {
        prices: null
-   }
+    }
    
     componentDidMount(){
         var chart = this.chart;
+        console.log(this.props)
             Axios.get(`https://localhost:5001/GasStations/` + this.props.location.state.id + `/Prices`, config)
             .then(res => {
                 this.setState({
@@ -57,10 +63,10 @@ class GetPrices extends React.Component {
 			}
 			    chart.render();
                 })
-
     };
 
     render() {
+       
         const options = {
             theme: "dark",
             title: {
@@ -117,6 +123,7 @@ class GetPrices extends React.Component {
                 <div className='pricesInnerDiv'>
                     <CanvasJSChart options={options} onRef={ref => this.chart = ref} />
                 </div>
+                <Link to='/getGasStations' className='backButton'>Grįžti</Link>
 		    </div>
 		);
 	}

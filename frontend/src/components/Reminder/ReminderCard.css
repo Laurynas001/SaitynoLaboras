@@ -1,0 +1,28 @@
+.reminderCard {
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px;
+  min-width: 150px;
+  min-height: 100px;
+  text-align: center;
+  margin: 20px;
+}
+
+.gasStationParam {
+  margin: 5px;
+  white-space: nowrap;
+  display: block;
+  justify-content: space-around;
+}
+
+.titleInputPair {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+}
+
+.gasStationParamTitle {
+  display: block;
+  margin: 5px;
+}

@@ -11,6 +11,13 @@ class Login extends React.Component {
         password: ''
     }
 
+    parseJwt(token) {
+    if (!token) { return; }
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64));
+    }
+
     handleUsernameChange(value) {
         this.setState({
             username: value
@@ -34,11 +41,9 @@ class Login extends React.Component {
         Axios.post(`https://localhost:5001/Login`, this.state).then(res => {
             cookies.set("accessToken", res.data.accessToken);
             cookies.set("refreshToken", res.data.refreshToken);
-            console.log(res);
-            console.log(cookies.get("accessToken"));
-            console.log(cookies.get("refreshToken"));
+            cookies.set("userId", this.parseJwt(res.data.accessToken).Id);
+            cookies.set("role", res.data.user.role);
             if (cookies.get("accessToken") != null) {
-                console.log('fdjnk')
                 window.location.href = "/";
         }
         })
