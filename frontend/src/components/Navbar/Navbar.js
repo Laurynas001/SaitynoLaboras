@@ -8,11 +8,20 @@ const cookies = new Cookies();
     
 class Navbar extends React.Component {    
     state = {
-        isLoggedIn: false
+        isLoggedIn: false,
+        isAdmin: false
     }
     
     isLoggedIn() {
-        if (cookies.get('accessToken') != null)
+        if (cookies.get('accessToken') != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+        
+    isAdmin() {
+        if (cookies.get('role') == 'Admin')
         {
             return true;
         } else {
@@ -40,6 +49,13 @@ class Navbar extends React.Component {
                         :
                         <div></div>
                     }
+                     {this.isAdmin() ?
+                    <Link to='/postGasStations' className='navigationBarLink'>
+                            <li>Sukurti naują degalinę</li>
+                    </Link>
+                        :
+                        <div></div>
+                    }
                     {this.isLoggedIn() ?
                         <Link to='/logout' className='navigationBarLink'>
                             <li><button className='loginButton'>Atsijungti</button></li>
@@ -49,7 +65,6 @@ class Navbar extends React.Component {
                             <li><button className='loginButton'>Prisijungti</button></li>
                         </Link>
                     }
- 
                 </ul>
             </nav>
         );
