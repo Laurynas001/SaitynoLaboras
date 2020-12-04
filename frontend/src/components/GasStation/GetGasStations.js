@@ -15,7 +15,7 @@ function GetGasStations() {
         getGasStations();
     }
     return (
-        <div className='outterDiv'>
+        <div className='getGasStationsOutterDiv'>
             <div className='cards'>
                 {
                     gasStations.map(gasStation => Card(gasStation))

@@ -15,6 +15,7 @@ import GetPrices from './components/Prices/GetPrices';
 import GetReminder from './components/Reminder/GetReminder';
 import ChangeReminder from './components/Reminder/ChangeReminder';
 import PostReminder from './components/Reminder/PostReminder';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
       <div className='App'>
         <Navbar />
         <Switch>
-          <Route path='/' exact component={GetGasStations}/>
+          <Route path='/' exact component={Home}/>
           <Route path='/about' component={About} />
           <Route path='/getGasStations' component={GetGasStations} />
           <Route path='/login' component={Login} />

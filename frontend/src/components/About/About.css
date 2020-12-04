@@ -2,8 +2,54 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-image: url(../..//Pictures/mainImage.jpg);
+  min-height: 100%;
+  background-image: url(../../Pictures/mainImage6.png);
+  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+  /* filter: blur(2px); */
+  filter: grayscale(60%);
+}
+
+.aboutInnerDiv {
+  margin-top: 70px;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100%;
+  width: 60%;
+  text-align: center;
+  color: white;
+}
+
+.aboutTitle1 {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  font-size: 50px;
+  font-style: italic;
+}
+
+.aboutTitle2 {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 40px;
+  font-style: italic;
+}
+
+.aboutTitle2:before,
+.aboutTitle2:after {
+  display: flex;
+  color: white;
+  content: "";
+  flex: 1 1;
+  border-bottom: 2px solid white;
+  margin: auto;
+}
+
+.aboutTitleText {
+  text-align: justify;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 22px;
 }

@@ -1,0 +1,60 @@
+.homeOutterDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  min-width: 100%;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.heroVideo {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.homeTitle {
+  z-index: 1;
+  color: white;
+  text-align: center;
+  font-family: "Poppins";
+}
+
+.homeTitle1 {
+  font-size: 45px;
+  margin: 25px;
+}
+
+.homeTitle2 {
+  font-size: 55px;
+  margin: 25px;
+}
+
+.getStartedButton {
+  background-color: aliceblue;
+  outline: none;
+  border-style: none;
+  border-radius: 80px;
+  height: 40px;
+  font-size: 16px;
+  margin: 25px;
+  text-align: center;
+  transition: 1s ease-out;
+}
+
+.getStartedButton:hover {
+  border: 3px solid yellow;
+  background-color: black;
+  color: white;
+}
+
+.getStartedButton:active {
+  transition: none;
+  border: 3px solid green;
+}
