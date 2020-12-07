@@ -42,10 +42,12 @@ class Login extends React.Component {
             cookies.set("accessToken", res.data.accessToken);
             cookies.set("refreshToken", res.data.refreshToken);
             cookies.set("userId", this.parseJwt(res.data.accessToken).Id);
+            cookies.set("accessTokenExpiration", this.parseJwt(res.data.accessToken).exp);
+            console.log(this.parseJwt(res.data.accessToken).exp)
             cookies.set("role", res.data.user.role);
             if (cookies.get("accessToken") != null) {
                 window.location.href = "/";
-        }
+            }
         })
         this.setState({
         username: '',

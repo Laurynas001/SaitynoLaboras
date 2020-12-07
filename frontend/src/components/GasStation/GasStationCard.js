@@ -3,7 +3,6 @@ import './GasStationCard.css';
 import DeleteGasStation from './DeleteGasStation';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import GetPrices from '../Prices/GetPrices';
 
 
 const cookies = new Cookies();
@@ -71,8 +70,15 @@ function GasStationCard(props) {
                         Sukurti priminimą
                     </Link>
                     :
-            <div></div>
-            }
+                    <div></div>
+                }
+                {isAdmin() ?
+                    <Link to={{pathname: '/postPrice', state: props}} className='pricesLink'>
+                        Įkelti kainą
+                    </Link>
+                    :
+                    <div></div>
+                     }
             </div>
         </div>
     );

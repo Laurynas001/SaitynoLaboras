@@ -2,9 +2,11 @@ import React from 'react';
 import './Home.css';
 import heroVideo from '../../Pictures/Spedometer.mp4';
 import { Link } from 'react-router-dom';
+import RefreshToken from '../Token/RefreshToken';
 
 function Home() {
     return (
+        RefreshToken(),
         <div className='homeOutterDiv'>
             <div className='homeTitle'>
                 <div className='homeTitle1'>Kiekvienam vairuojančiam svarbu kuro kokybė ir kaina</div>

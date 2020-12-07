@@ -3,11 +3,9 @@ import Axios from 'axios';
 import Cookies from 'universal-cookie';
 import './GetPrices.css';
 import CanvasJSReact from '../../lib/canvasjs.react';
-import ReactDom from 'react-dom';
-import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import PricesList from './PricesList';
 
-var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const cookies = new Cookies();
@@ -32,7 +30,6 @@ class GetPrices extends React.Component {
    
     componentDidMount(){
         var chart = this.chart;
-        console.log(this.props)
             Axios.get(`https://localhost:5001/GasStations/` + this.props.location.state.id + `/Prices`, config)
             .then(res => {
                 this.setState({
@@ -124,6 +121,7 @@ class GetPrices extends React.Component {
                     <CanvasJSChart options={options} onRef={ref => this.chart = ref} />
                 </div>
                 <Link to='/getGasStations' className='backButton'>Grįžti</Link>
+                <PricesList props={this.props}/>
 		    </div>
 		);
 	}
