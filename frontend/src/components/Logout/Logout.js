@@ -10,6 +10,7 @@ function Logout() {
         cookies.remove('refreshToken');
         cookies.remove('userId');
         cookies.remove('role');
+        cookies.remove('accessTokenExpiration');
         window.location.href = "/";
     }
 

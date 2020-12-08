@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
 import './PostPrice.css';
+import RefreshToken from '../Token/RefreshToken';
 
 function PostPrice(props) {
     const state = {
@@ -26,11 +27,13 @@ function PostPrice(props) {
     }
 
     function postPrice() {
+        config.headers.Authorization = 'Bearer ' + cookies.get('accessToken');
             Axios.post(`https://localhost:5001/GasStations/` + props.location.state.id + `/Prices`, state, config).then(res => {
             });
     }
 
     return (
+         RefreshToken(),
         <div className='postPriceOutterDiv'>
             <div className='postPriceInnerDiv'>
                 <div className='postPriceTitleDiv'>

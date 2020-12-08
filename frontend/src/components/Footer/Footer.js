@@ -1,8 +1,10 @@
 import React from 'react';
 import './Footer.css';
+import RefreshToken from '../Token/RefreshToken';
 
 function Footer() {
     return (
+        RefreshToken(),
         <div className='mainFooter'>
             <div className='container'>
                 <div className='row'>

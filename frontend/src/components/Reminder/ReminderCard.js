@@ -3,9 +3,11 @@ import Cookies from 'universal-cookie';
 import { Link } from 'react-router-dom';
 import './ReminderCard.css';
 import DeleteReminder from './DeleteReminder';
+import RefreshToken from '../Token/RefreshToken';
 
 function ReminderCard(props) {
-        return (
+    return (
+            RefreshToken(),
             <div className='reminderCard' key={props.id + 'card'}>
                 <div className='reminderChangeValues' key={props.id + 'changeReminderValues'}>
                 <Link to={{pathname: '/changeReminder', state: props}} className='iconLink'>

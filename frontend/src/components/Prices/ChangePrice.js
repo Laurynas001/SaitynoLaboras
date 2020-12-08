@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
 import './ChangePrice.css';
+import RefreshToken from '../Token/RefreshToken';
 
 const cookies = new Cookies();
 const config = {
@@ -50,6 +51,7 @@ class ChangePrice extends React.Component {
     }
 
     changePrice() {
+        config.headers.Authorization = 'Bearer ' + cookies.get('accessToken');
         Axios.put(`https://localhost:5001/GasStations/` + this.props.location.state.gasStationId + `/Prices/` + this.props.location.state.id, this.state, config).then(res => {
             console.log(res.data);
         });
@@ -57,6 +59,7 @@ class ChangePrice extends React.Component {
 
     render() {
         return (
+            RefreshToken(),
             <div className='changePriceOutterDiv'>
                 <div className='changePriceInnerDiv'>
                     <div className='changePriceTitleDiv'>

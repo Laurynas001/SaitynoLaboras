@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Cookies from 'universal-cookie';
 import Axios from 'axios';
 
@@ -9,24 +9,27 @@ function RefreshToken() {
         refreshToken: cookies.get('refreshToken')
     }
 
+    function parseJwt(token) {
+        if (!token) { return; }
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64));
+    }
+
     function Refresh() {
         const newTime = new Date();
-        console.log('out')
-        console.log(Date.parse(newTime))
-        console.log(cookies.get('accessTokenExpiration')+'000')
-        console.log(cookies.get('accessTokenExpiration')+'000' <= Date.parse(newTime))
-        if (cookies.get('accessTokenExpiration')+'000' < Date.parse(newTime)) {
-            console.log('refresh')
+        if (cookies.get('accessTokenExpiration') + '000' < Date.parse(newTime)) {
             Axios.post(`https://localhost:5001/Token`, state).then(res => {
-                cookies.set('accessToken', res.data.accessToken)
-                cookies.set('refreshToken', res.data.refreshToken)
+                cookies.set('accessToken', res.data.accessToken);
+                cookies.set('refreshToken', res.data.refreshToken);
+                cookies.set("accessTokenExpiration", parseJwt(res.data.accessToken).exp);
             });
         }
     }
 
-    return (
-        Refresh()  
-    );
+        return (
+            Refresh()
+        );
 }
 
 export default RefreshToken;

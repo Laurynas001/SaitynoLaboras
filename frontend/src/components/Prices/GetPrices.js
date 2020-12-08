@@ -5,6 +5,7 @@ import './GetPrices.css';
 import CanvasJSReact from '../../lib/canvasjs.react';
 import { Link } from 'react-router-dom';
 import PricesList from './PricesList';
+import RefreshToken from '../Token/RefreshToken';
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -20,6 +21,16 @@ const dataPointsA95 = [];
 const dataPointsD = [];
 const dataPointsDz = [];
 const dataPointsGas = [];
+
+
+    function isAdmin() {
+        if (cookies.get('role') == 'Admin')
+        {
+            return true;
+        } else {
+            return false;
+    }
+}
     
 
 
@@ -28,7 +39,8 @@ class GetPrices extends React.Component {
        prices: null
     }
    
-    componentDidMount(){
+    componentDidMount() {
+        config.headers.Authorization = 'Bearer ' + cookies.get('accessToken');
         var chart = this.chart;
             Axios.get(`https://localhost:5001/GasStations/` + this.props.location.state.id + `/Prices`, config)
             .then(res => {
@@ -116,12 +128,17 @@ class GetPrices extends React.Component {
             ]
         }
         return (
+            RefreshToken(),
             <div className='pricesOutterDiv'>
                 <div className='pricesInnerDiv'>
                     <CanvasJSChart options={options} onRef={ref => this.chart = ref} />
                 </div>
                 <Link to='/getGasStations' className='backButton'>Grįžti</Link>
-                <PricesList props={this.props}/>
+                {isAdmin() ?
+                    < PricesList props={this.props} />
+                    :
+                    <div></div>
+                }
 		    </div>
 		);
 	}

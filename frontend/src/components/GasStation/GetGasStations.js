@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './GetGasStations.css';
 import Axios from 'axios';
 import Card from './GasStationCard';
+import RefreshToken from '../Token/RefreshToken';
 
 function GetGasStations() {
     const [gasStations, setGasStations] = useState([]);
@@ -15,6 +16,7 @@ function GetGasStations() {
         getGasStations();
     }
     return (
+        RefreshToken(),
         <div className='getGasStationsOutterDiv'>
             <div className='cards'>
                 {

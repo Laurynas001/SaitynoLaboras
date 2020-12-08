@@ -98,3 +98,17 @@
 .reminderChangeValues {
   text-align: right;
 }
+
+.disabledChangeReminderInput {
+  border: 2px solid black;
+  border-radius: 80px;
+  height: 35px;
+  width: 240px;
+  font-size: 15px;
+  outline: none;
+  text-align: center;
+  padding: 0;
+  transition: all 1s ease;
+  color: black;
+  background-color: rgb(200, 200, 200);
+}

@@ -1,8 +1,10 @@
 import React from 'react';
 import './About.css';
+import RefreshToken from '../Token/RefreshToken';
 
 function About() {
     return (
+        RefreshToken(),
         <div className='aboutOutterDiv'>
             <div className='aboutInnerDiv'>
                 <div className='aboutTitle1'>Apie mus</div>

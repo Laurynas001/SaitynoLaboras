@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'universal-cookie';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
@@ -16,6 +17,8 @@ import PostReminder from './components/Reminder/PostReminder';
 import Home from './components/Home/Home';
 import PostPrice from './components/Prices/PostPrice';
 import ChangePrice from './components/Prices/ChangePrice';
+
+const cookies = new Cookies();
 
 function App() {
   return (

@@ -21,7 +21,7 @@ class PricesList extends React.Component {
     counter = 0;
 
     componentDidMount() {
-        RefreshToken();
+        config.headers.Authorization = 'Bearer ' + cookies.get('accessToken');
         Axios.get(`https://localhost:5001/GasStations/` + this.props.props.location.state.id + `/Prices`, config).then(res => {
              this.setState({
                     prices: res.data
@@ -31,6 +31,7 @@ class PricesList extends React.Component {
 
     render() {
         return (
+        RefreshToken(),
         <div className='pricesListInnerDiv'>
             <h1 className='pricesListTitle'>Kainos</h1>
             <table className='pricesListTable'>
