@@ -2,16 +2,14 @@ import React from 'react';
 import Axios from 'axios';  
 import Cookies from 'universal-cookie';
 import './PostUser.css';
-import Navbar from '../Navbar/Navbar';
-import { Route } from 'react-router-dom';
 
 const cookies = new Cookies();
-class PostUser extends React.Component {
+class PostAdminUser extends React.Component {
     state = {
         username: '',
         password: '',
         email: '',
-        role: 'User'
+        role: ''
     }
 
     handleUsernameChange(value) {
@@ -29,6 +27,12 @@ class PostUser extends React.Component {
     handleEmailChange(value) {
         this.setState({
             email: value
+        })
+    }
+
+    handleRoleChange(value) {
+        this.setState({
+            role: value
         })
     }
     
@@ -72,4 +76,4 @@ class PostUser extends React.Component {
     }
 }
 
-export default PostUser;
+export default PostAdminUser;

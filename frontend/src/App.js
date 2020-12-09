@@ -17,6 +17,9 @@ import PostReminder from './components/Reminder/PostReminder';
 import Home from './components/Home/Home';
 import PostPrice from './components/Prices/PostPrice';
 import ChangePrice from './components/Prices/ChangePrice';
+import GetUsers from './components/Users/GetUsers';
+import ChangeUser from './components/Users/ChangeUser';
+import PostUser from './components/Users/PostUser';
 
 const cookies = new Cookies();
 
@@ -39,6 +42,9 @@ function App() {
           <Route path='/postReminder' component={PostReminder} />
           <Route path='/postPrice' component={PostPrice} />
           <Route path='/changePrice' component={ChangePrice} />
+          <Route path='/getUsers' component={GetUsers} />
+          <Route path='/changeUser' component={ChangeUser} />
+          <Route path='/postUser' component={PostUser} />
         </Switch>
         <Footer/>
       </div>

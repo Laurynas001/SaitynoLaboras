@@ -1,4 +1,4 @@
-.changePriceOutterDiv {
+.changeUserOutterDiv {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@
   background-repeat: no-repeat;
 }
 
-.changePriceInnerDiv {
+.changeUserInnerDiv {
   border: 3px solid rgb(10, 160, 5);
   border-radius: 70px;
   margin: auto;
@@ -23,8 +23,8 @@
   margin-bottom: 70px;
 }
 
-.changePriceInputDiv,
-.changePriceButtonDiv {
+.changeUserInputDiv,
+.changeUserButtonDiv {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -33,7 +33,7 @@
   padding: 0;
 }
 
-.changePriceInput {
+.changeUserInput {
   border: 2px solid black;
   border-radius: 80px;
   height: 35px;
@@ -51,7 +51,7 @@
   margin-bottom: 5px;
 }
 
-.changePriceButton {
+.changeUserButton {
   border: 2px solid white;
   color: white;
   background-color: black;
@@ -63,12 +63,12 @@
   transition: all 1s ease;
 }
 
-.changePriceInput:hover,
-.changePriceButton:hover {
+.changeUserInput:hover,
+.changeUserButton:hover {
   border: 2px solid yellow;
 }
 
-.changePriceButton:active {
+.changeUserButton:active {
   transition: none;
   border: 2px solid green;
 }
@@ -95,6 +95,12 @@
   border: 2px solid green;
 }
 
-.PriceChangeValues {
+.UserChangeValues {
   text-align: right;
+}
+
+.changeUserTitle {
+  font-size: 30px;
+  color: white;
+  margin: 20px;
 }
