@@ -6,7 +6,7 @@
   position: fixed;
   padding: 50px;
   top: 42px;
-  background-color: green;
+  background-color: red;
   width: 100%;
   -webkit-transition: width 0.5s;
   transition: width 0.5s;

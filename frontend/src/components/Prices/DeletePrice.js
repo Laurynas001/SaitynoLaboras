@@ -15,7 +15,7 @@ function DeletePrice(props) {
         config.headers.Authorization = 'Bearer ' + cookies.get('accessToken');
         Axios.delete(`https://localhost:5001/GasStations/`+ props.gasStationId + `/Prices/` + props.id, config).then(res => {
         });
-    window.location.href = "/getPrices";
+    window.location.href = "/prices";
 }
 
 export default DeletePrice;

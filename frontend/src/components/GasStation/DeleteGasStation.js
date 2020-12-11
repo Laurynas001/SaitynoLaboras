@@ -15,19 +15,12 @@ function DeleteGasStation(props) {
     const state = {
         id: props.id
     }
-    function Delete() {
         RefreshToken();
         config.headers.Authorization = 'Bearer ' + cookies.get('accessToken');
         Axios.delete(`https://localhost:5001/GasStations/` + props.id, config).then(res => {
             console.log(res.data);
         });
         window.location.href = "/getGasStations";
-    }
-
-    return (
-        <div className='deleteDiv'>Ar tikrai norite istrinti?
-         </div>
-    );
 }
 
 export default DeleteGasStation;

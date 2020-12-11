@@ -9,10 +9,6 @@ function GetGasStations() {
     const [gasStations, setGasStations] = useState([]);
 
     function getGasStations() {
-        const today = Date.now();
-        console.log(format(new Date(), 'yyyy/MM/dd kk:mm:ss'))
-        console.log(today)
-        console.log(new Intl.DateTimeFormat('eu', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(today));
         Axios.get(`https://localhost:5001/GasStations`).then(res => {
             setGasStations(res.data);
         });

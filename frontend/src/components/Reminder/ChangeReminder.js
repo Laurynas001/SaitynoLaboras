@@ -15,10 +15,14 @@ const config = {
 class ChangeReminder extends React.Component {
     state = {
             gasStationName: this.props.location.state.gasStationName,
-            city: '',
-            address: '',
             gasType: this.props.location.state.gasType,
-            wantedPrice: this.props.location.state.wantedPrice
+            wantedPrice: this.props.location.state.wantedPrice,
+            gasStationId: this.props.location.state.gasStationId
+    }
+
+    state2 = {
+        city: '',
+        address: ''
     }
     
     componentDidMount() {
