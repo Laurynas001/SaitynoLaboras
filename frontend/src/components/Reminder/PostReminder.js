@@ -14,7 +14,7 @@ const config = {
 class PostReminder extends React.Component {
     state = {
         gasStationName: this.props.location.state.name,
-        gasType: '',
+        gasType: 'A95',
         wantedPrice: '',
         gasStationId: this.props.location.state.id
     }
@@ -44,6 +44,7 @@ class PostReminder extends React.Component {
         this.setState({
             gasType: value,
         })
+        console.log(this.state.gasType)
     }
 
     handleWantedPriceChange(value) {
@@ -81,9 +82,13 @@ class PostReminder extends React.Component {
                     <div className='postReminderInputDiv'>
                         <input type='text' placeholder='Gatvė' disabled="disabled" value={this.address} className='disabledPostReminderInput' onChange={event => this.handleAddressChange(event.target.value)} />
                     </div>
-                    <div className='postReminderInputDiv'>
-                        <input type='text' placeholder='Kuro tipas' value={this.state.gasType} className='postReminderInput' onChange={event => this.handleGasTypeChange(event.target.value)} />
-                    </div>
+                    <select className='postReminderInput' value={this.state.gasType} onChange={event => this.handleGasTypeChange(event.target.value)}> 
+                        <option className="A95"> A95</option>
+                        <option name="A98">A98</option>
+                        <option name="D">D</option>
+                        <option name="Dz">Dz</option>
+                        <option name="Gas">Gas</option>
+                    </select>
                     <div className='postReminderInputDiv'>
                         <input type='text' placeholder='Norima kaina' value={this.state.wantedPrice} className='postReminderInput' onChange={event => this.handleWantedPriceChange(event.target.value)} />
                     </div>

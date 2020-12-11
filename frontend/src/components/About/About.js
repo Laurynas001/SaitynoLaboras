@@ -1,6 +1,7 @@
 import React from 'react';
 import './About.css';
 import RefreshToken from '../Token/RefreshToken';
+import SuccessModal from '../Users/SuccessModal';
 
 function About() {
     return (

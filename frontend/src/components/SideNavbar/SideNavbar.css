@@ -8,6 +8,8 @@
   top: 42px;
   background-color: green;
   width: 100%;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
 .sideNavbarLink {

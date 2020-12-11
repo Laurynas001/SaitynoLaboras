@@ -5,6 +5,8 @@ import Cookies from 'universal-cookie';
 import { Link } from 'react-router-dom';
 import DeletePrice from './DeletePrice';
 import RefreshToken from '../Token/RefreshToken';
+import { format } from 'date-fns';
+import dateFormat from 'dateformat';
 
 const cookies = new Cookies();
 const config = {
@@ -57,7 +59,7 @@ class PricesList extends React.Component {
                                 <td>{item.dPrice}</td>
                                 <td>{item.dzPrice}</td>
                                 <td>{item.gasPrice}</td>
-                                <td>{item.date}</td>
+                                <td>{dateFormat(item.date, "yyyy-mm-dd hh:mm:ss")}</td>
                                 <td>
                                     <div className='priceChangeValues' key={item.id + 'changeValues'}>
                                         <Link to={{pathname: '/changePrice', state: item}} className='iconLink'>

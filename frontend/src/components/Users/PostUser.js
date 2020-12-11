@@ -4,6 +4,7 @@ import Cookies from 'universal-cookie';
 import './PostUser.css';
 import Navbar from '../Navbar/Navbar';
 import { Route } from 'react-router-dom';
+import SuccessModal from './SuccessModal';
 
 const cookies = new Cookies();
 class PostUser extends React.Component {
@@ -12,6 +13,14 @@ class PostUser extends React.Component {
         password: '',
         email: '',
         role: 'User'
+    }
+
+    state1 = {
+        password2: '',
+    }
+
+    toggleSuccessModal = {
+        toggle: false
     }
 
     handleUsernameChange(value) {
@@ -31,22 +40,40 @@ class PostUser extends React.Component {
             email: value
         })
     }
+
+     handleToggleChange(value) {
+        this.setState({
+            toggle: value
+        })
+    
+    }
+
+    handlePassword2Change(value) {
+        this.setState({
+            password2: value
+        })
+    }
     
     postUser() {
         Axios.post(`https://localhost:5001/Users`, this.state).then(res => {
-                this.props.history.push('/login');
-                window.location.reload();
+                    this.setState(this.toggleSuccessModal = {
+                        toggle: !this.state.toggle
+                    })
         })
         this.setState({
             username: '',
             password: '',
-            email: ''
+            email: '',
+            password2: ''
         })
     }
 
     render() {
         return (
-             <div className='postUserOutterDiv'>
+            <div className='postUserOutterDiv'>
+                {this.toggleSuccessModal.toggle ?
+                <SuccessModal/> : ''
+                }
                 <div className='postUserInnerDiv'>
                     <div className='postUserTitleDiv'>
                         <div className='postUserTitle'>Registravimasis</div>
@@ -61,7 +88,7 @@ class PostUser extends React.Component {
                         <input type='password' placeholder='Slaptažodis' value={this.state.password} className='postUserInput' onChange={event => this.handlePasswordChange(event.target.value)} />
                     </div>
                     <div className='postUserInputDiv'>
-                        <input type='password' placeholder='Pakartotinas slaptažodis' value={this.state.password2} className='postUserInput' />
+                        <input type='password' placeholder='Pakartotinas slaptažodis' value={this.state.password2} className='postUserInput' onChange={event => this.handlePassword2Change(event.target.value)}/>
                     </div>
                     <div className='postUserButtonDiv'>
                         <button className='postUserButton' onClick={event => this.postUser()}>Registruotis</button>

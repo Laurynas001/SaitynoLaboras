@@ -46,7 +46,7 @@ function GasStationCard(props) {
             <div className='gasStationChangeValues' key={props.id + 'changeValues'}>
                 <Link to={{pathname: '/changeGasStation', state: props}} className='iconLink'>
                     <i className="fas fa-cog" />
-                </Link>
+                    </Link>
                 <i className="fas fa-trash-alt" onClick={event => DeleteGasStation(props)}/>
             </div>
                     :

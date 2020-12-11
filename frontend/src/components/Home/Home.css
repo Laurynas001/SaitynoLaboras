@@ -46,6 +46,7 @@
   margin: 25px;
   text-align: center;
   transition: 1s ease-out;
+  padding: 10px;
 }
 
 .getStartedButton:hover {
@@ -57,4 +58,13 @@
 .getStartedButton:active {
   transition: none;
   border: 3px solid green;
+}
+
+@media (max-width: 768px) {
+  .homeTitle1 {
+    font-size: 25px;
+  }
+  .homeTitle2 {
+    font-size: 30px;
+  }
 }

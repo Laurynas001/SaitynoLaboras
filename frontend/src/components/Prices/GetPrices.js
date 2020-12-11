@@ -6,6 +6,7 @@ import CanvasJSReact from '../../lib/canvasjs.react';
 import { Link } from 'react-router-dom';
 import PricesList from './PricesList';
 import RefreshToken from '../Token/RefreshToken';
+import dateFormat from 'dateformat';
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -49,23 +50,23 @@ class GetPrices extends React.Component {
                 })
                 for (var i = 0; i < this.state.prices.length; i++) {
                     dataPointsA98.push({
-                        x: new Date(this.state.prices[i].date),
+                        x: new Date(dateFormat(this.state.prices[i].date, "yyyy-mm-dd")),
                         y: this.state.prices[i].a98Price
                     });
                     dataPointsA95.push({
-                        x: new Date(this.state.prices[i].date),
+                        x: new Date(dateFormat(this.state.prices[i].date, "yyyy-mm-dd")),
                         y: this.state.prices[i].a95Price
                     });
                     dataPointsD.push({
-                        x: new Date(this.state.prices[i].date),
+                        x: new Date(dateFormat(this.state.prices[i].date, "yyyy-mm-dd")),
                         y: this.state.prices[i].dPrice
                     });
                     dataPointsDz.push({
-                        x: new Date(this.state.prices[i].date),
+                        x: new Date(dateFormat(this.state.prices[i].date, "yyyy-mm-dd")),
                         y: this.state.prices[i].dzPrice
                     });
                     dataPointsGas.push({
-                        x: new Date(this.state.prices[i].date),
+                        x: new Date(dateFormat(this.state.prices[i].date, "yyyy-mm-dd")),
                         y: this.state.prices[i].gasPrice
                     });
                     

@@ -24,6 +24,9 @@
   width: 60%;
   text-align: center;
   color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 50px;
+  border-radius: 50px;
 }
 
 .aboutTitle1 {
@@ -36,7 +39,7 @@
 .aboutTitle2 {
   margin-top: 25px;
   margin-bottom: 25px;
-  font-size: 40px;
+  font-size: 50px;
   font-style: italic;
 }
 
