@@ -3,6 +3,7 @@ import Axios from 'axios';
 import Cookies from 'universal-cookie';
 import './Login.css';
 import Navbar from '../Navbar/Navbar';
+import { Route } from 'react-router-dom';
 
 const cookies = new Cookies();
 class Login extends React.Component {
@@ -39,19 +40,21 @@ class Login extends React.Component {
     
     handleLogin() {
         Axios.post(`https://localhost:5001/Login`, this.state).then(res => {
-            cookies.set("accessToken", res.data.accessToken);
-            cookies.set("refreshToken", res.data.refreshToken);
-            cookies.set("userId", this.parseJwt(res.data.accessToken).Id);
-            cookies.set("role", res.data.user.role);
+            cookies.set("accessToken", res.data.accessToken, {expires: 0});
+            cookies.set("refreshToken", res.data.refreshToken, {expires: 0});
+            cookies.set("userId", this.parseJwt(res.data.accessToken).Id, {expires: 0});
+            cookies.set("accessTokenExpiration", this.parseJwt(res.data.accessToken).exp, {expires: 0});
+            cookies.set("role", res.data.user.role, {expires: 0});
             if (cookies.get("accessToken") != null) {
-                window.location.href = "/";
-        }
+                this.props.history.push('/');
+                window.location.reload();
+
+            }
         })
         this.setState({
         username: '',
         password: ''
         })
-        //window.location.reload();
 
     }
 

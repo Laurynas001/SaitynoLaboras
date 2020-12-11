@@ -6,6 +6,7 @@
   min-height: 100px;
   text-align: center;
   margin: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .gasStationParam {
@@ -18,46 +19,75 @@
 .linkToPricesDiv {
   display: flex;
   width: 100%;
+  min-height: 13%;
   margin-top: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 6%;
+  background-color: black;
+  border-radius: 80px;
   justify-content: center;
-  background-color: black;
-  border-radius: 80px;
-}
-
-.pricesLink {
-  width: 35%;
-  border: 2px solid black;
-  border-radius: 80px;
-  background-color: black;
-  color: white;
-  text-decoration: none;
-  padding: 5px;
-  font-size: 20px;
-  transition: all 1s ease;
   text-align: center;
 }
 
-.reminderLink {
-  width: 65%;
+.pricesLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  min-height: 100%;
   border: 2px solid black;
   border-radius: 80px;
   background-color: black;
   color: white;
   text-decoration: none;
+  font-size: 20px;
+  transition: all 1s ease;
+  white-space: nowrap;
+}
+
+.postPriceLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 5px;
+  min-height: 100%;
+  border: 2px solid black;
+  border-radius: 80px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  transition: all 1s ease;
+  white-space: nowrap;
+}
+
+.reminderLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  line-height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 80px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
   font-size: 20px;
   transition: all 1s ease;
 }
 
 .pricesLink:hover,
-.reminderLink:hover {
+.reminderLink:hover,
+.postPriceLink:hover {
   color: black;
   background-color: white;
 }
 
 .pricesLink:active,
-.reminderLink:active {
+.reminderLink:active,
+.postPriceLink:active {
   transition: none;
   border: 2px solid green;
 }

@@ -1,0 +1,25 @@
+.pricesListInnerDiv {
+  border: 3px solid rgb(10, 160, 5);
+  border-radius: 70px;
+  margin: auto;
+  padding: 15px;
+  width: auto;
+  text-align: center;
+  box-shadow: 0 0 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+  margin-bottom: 70px;
+  color: white;
+}
+
+.pricesListTable {
+  margin: 10px;
+}
+
+th {
+  border: 2px solid white;
+}
+
+td {
+  border: 2px solid white;
+}

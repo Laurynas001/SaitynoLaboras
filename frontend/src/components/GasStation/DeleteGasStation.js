@@ -1,6 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
+import RefreshToken from '../Token/RefreshToken';
+import './DeleteGasStation.css';
 
 const cookies = new Cookies();
 const config = {
@@ -13,10 +15,12 @@ function DeleteGasStation(props) {
     const state = {
         id: props.id
     }
-        Axios.delete(`https://localhost:5001/GasStations/`+ props.id, config).then(res => {
+        RefreshToken();
+        config.headers.Authorization = 'Bearer ' + cookies.get('accessToken');
+        Axios.delete(`https://localhost:5001/GasStations/` + props.id, config).then(res => {
             console.log(res.data);
         });
-    window.location.href = "/getGasStations";
+        window.location.href = "/getGasStations";
 }
 
 export default DeleteGasStation;

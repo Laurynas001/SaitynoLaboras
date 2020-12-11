@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
 import './PostReminder.css';
+import RefreshToken from '../Token/RefreshToken';
 
 const cookies = new Cookies();
 const config = {
@@ -12,12 +13,14 @@ const config = {
     
 class PostReminder extends React.Component {
     state = {
-        gasStationName: '',
-        city: '',
-        address: '',
-        gasType: '',
-        wantedPrice: ''
+        gasStationName: this.props.location.state.name,
+        gasType: 'A95',
+        wantedPrice: '',
+        gasStationId: this.props.location.state.id
     }
+
+    city = this.props.location.state.city;
+    address = this.props.location.state.address;
 
     handleGasStationNameChange(value) {
         this.setState({
@@ -41,6 +44,7 @@ class PostReminder extends React.Component {
         this.setState({
             gasType: value,
         })
+        console.log(this.state.gasType)
     }
 
     handleWantedPriceChange(value) {
@@ -50,37 +54,41 @@ class PostReminder extends React.Component {
     }
 
     postReminder() {
+        config.headers.Authorization = 'Bearer ' + cookies.get('accessToken');
         Axios.post(`https://localhost:5001/Users/` + cookies.get('userId') + `/Reminders`, this.state, config).then(res => {
             console.log(res.data);
             });
         this.setState({
-        gasStationName: '',
-        city: '',
-        address: '',
-        gasType: '',
-        wantedPrice: ''
+            gasStationName: '',
+            gasType: '',
+            wantedPrice: ''
     })
     }
 
     render() {
         return (
+            RefreshToken(),
             <div className='postReminderOutterDiv'>
                 <div className='postReminderInnerDiv'>
                     <div className='postReminderTitleDiv'>
                         <div className='postReminderTitle'>Įrašyti naują priminimą</div>
                     </div>
                     <div className='postReminderInputDiv'>
-                        <input type='text' placeholder='Pavadinimas' value={this.state.gasStationName} className='postReminderInput' onChange={event => this.handleGasStationNameChange(event.target.value)} />
+                        <input type='text' placeholder='Pavadinimas' disabled="disabled" value={this.state.gasStationName} className='disabledPostReminderInput' onChange={event => this.handleGasStationNameChange(event.target.value)} />
                     </div>
                     <div className='postReminderInputDiv'>
-                        <input type='text' placeholder='Miestas' value={this.state.city} className='postReminderInput' onChange={event => this.handleCityChange(event.target.value)} />
+                        <input type='text' placeholder='Miestas' disabled="disabled" value={this.city} className='disabledPostReminderInput' onChange={event => this.handleCityChange(event.target.value)} />
                     </div>
                     <div className='postReminderInputDiv'>
-                        <input type='text' placeholder='Gatvė' value={this.state.address} className='postReminderInput' onChange={event => this.handleAddressChange(event.target.value)} />
+                        <input type='text' placeholder='Gatvė' disabled="disabled" value={this.address} className='disabledPostReminderInput' onChange={event => this.handleAddressChange(event.target.value)} />
                     </div>
-                    <div className='postReminderInputDiv'>
-                        <input type='text' placeholder='Kuro tipas' value={this.state.gasType} className='postReminderInput' onChange={event => this.handleGasTypeChange(event.target.value)} />
-                    </div>
+                    <select className='postReminderInput' value={this.state.gasType} onChange={event => this.handleGasTypeChange(event.target.value)}> 
+                        <option className="A95"> A95</option>
+                        <option name="A98">A98</option>
+                        <option name="D">D</option>
+                        <option name="Dz">Dz</option>
+                        <option name="Gas">Gas</option>
+                    </select>
                     <div className='postReminderInputDiv'>
                         <input type='text' placeholder='Norima kaina' value={this.state.wantedPrice} className='postReminderInput' onChange={event => this.handleWantedPriceChange(event.target.value)} />
                     </div>

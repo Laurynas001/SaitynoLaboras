@@ -3,9 +3,12 @@ import Cookies from 'universal-cookie';
 import { Link } from 'react-router-dom';
 import './ReminderCard.css';
 import DeleteReminder from './DeleteReminder';
+import RefreshToken from '../Token/RefreshToken';
+import dateFormat from 'dateformat';
 
 function ReminderCard(props) {
-        return (
+    return (
+            RefreshToken(),
             <div className='reminderCard' key={props.id + 'card'}>
                 <div className='reminderChangeValues' key={props.id + 'changeReminderValues'}>
                 <Link to={{pathname: '/changeReminder', state: props}} className='iconLink'>
@@ -23,11 +26,11 @@ function ReminderCard(props) {
                 </div>
                 <div className='titleInputPair'>
                     <div className='gasStationParamTitle'>Sukūrimo data:</div>
-                    <div className='gasStationParam' key={props.id + 'creationDate'}>{props.creationDate}</div>
+                    <div className='gasStationParam' key={props.id + 'creationDate'}>{dateFormat(props.creationDate, "yyyy-mm-dd hh:mm:ss")}</div>
                 </div>
                 <div className='titleInputPair'>
                     <div className='gasStationParamTitle'>Galioja iki:</div>
-                    <div className='gasStationParam' key={props.id + 'valid'}>{props.validUntil}</div>
+                    <div className='gasStationParam' key={props.id + 'valid'}>{dateFormat(props.validUntil, "yyyy-mm-dd hh:mm:ss")}</div>
                 </div>
                 <div className='titleInputPair'>
                     <div className='gasStationParamTitle'>Norima kaina:</div>

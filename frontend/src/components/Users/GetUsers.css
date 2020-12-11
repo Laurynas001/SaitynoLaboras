@@ -1,0 +1,74 @@
+.usersOutterDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  background-image: url(../../Pictures/mainImage6.png);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* filter: blur(2px); */
+  /* -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); */
+  background-color: rgba(255, 255, 255, 0.5);
+  background-blend-mode: luminosity;
+}
+
+.usersInnerDiv {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid rgb(10, 160, 5);
+  border-radius: 70px;
+  margin: auto;
+  padding: 15px;
+  width: auto;
+  text-align: center;
+  box-shadow: 0 0 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 90px;
+  margin-bottom: 70px;
+  min-height: 100%;
+  color: white;
+  align-items: center;
+}
+
+.usersTable {
+  margin: 10px;
+}
+
+th {
+  border: 2px solid white;
+}
+
+td {
+  border: 2px solid white;
+}
+
+.newUserButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-width: 50%;
+  line-height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 80px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  transition: all 1s ease;
+}
+
+.newUserButton:hover {
+  color: yellow;
+  border: 2px solid yellow;
+}
+
+.newUserButton:active {
+  transition: none;
+  border: 2px solid green;
+}

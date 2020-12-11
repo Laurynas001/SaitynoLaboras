@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9q4aL3IEHjtaPfh2uggTyLSnzMSGShy7KajVjuzQ2smw8DmNenqiesxHvtwNpNOvC7x5MATWts7eQZtpOKKPMA==",
+  "dgSpecHash": "0B7G/p2UA0QaTrJDk9qlR/IM55swPgcAQkkadrs8NQOG65Z+eOv+jxduAoVkQSdKVkpeY7Gen2puu7mzVVxTFw==",
   "success": true,
   "projectFilePath": "D:\\C_Extend\\Desktop\\Saityno taikomuju programu projektavimas\\Projektas\\SaitynoLaboras\\SaitynoLaboras.csproj",
   "expectedPackageFiles": [
@@ -145,7 +145,9 @@
     "C:\\Users\\MASTER\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\MASTER\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\MASTER\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.10\\microsoft.netcore.app.host.win-x64.3.1.10.nupkg.sha512"
   ],
   "logs": [
     {

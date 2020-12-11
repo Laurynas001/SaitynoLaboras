@@ -3,7 +3,7 @@ import './GasStationCard.css';
 import DeleteGasStation from './DeleteGasStation';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import GetPrices from '../Prices/GetPrices';
+import RefreshToken from '../Token/RefreshToken';
 
 
 const cookies = new Cookies();
@@ -19,7 +19,16 @@ function isAdmin() {
 
 function isUser() {
     if (cookies.get('role') == 'User') {
-        console.log(cookies.get('role'))
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
+function isLogged() {
+    if (cookies.get('role') == 'Admin' || cookies.get('role') == 'User') {
         return true;
     }
     else {
@@ -31,12 +40,13 @@ function GasStationCard(props) {
     //const [showModal, setState] = useState(false)
 
     return (
+        RefreshToken(),
         <div className='card' key={props.id + 'card'}>
             {isAdmin() ?
             <div className='gasStationChangeValues' key={props.id + 'changeValues'}>
                 <Link to={{pathname: '/changeGasStation', state: props}} className='iconLink'>
                     <i className="fas fa-cog" />
-                </Link>
+                    </Link>
                 <i className="fas fa-trash-alt" onClick={event => DeleteGasStation(props)}/>
             </div>
                     :
@@ -66,13 +76,20 @@ function GasStationCard(props) {
                     <Link to={{pathname: '/prices', state: props}} className='pricesLink'>
                         Kainos
                     </Link>
-                    {isUser() ?
+                    {isLogged() ?
                     <Link to={{pathname: '/postReminder', state: props}} className='reminderLink'>
                         Sukurti priminimą
                     </Link>
                     :
-            <div></div>
-            }
+                    <div></div>
+                    }
+                    {isAdmin() ?
+                        <Link to={{pathname: '/postPrice', state: props}} className='postPriceLink'>
+                            Įkelti kainą
+                        </Link>
+                        :
+                        <div></div>
+                     }
             </div>
         </div>
     );

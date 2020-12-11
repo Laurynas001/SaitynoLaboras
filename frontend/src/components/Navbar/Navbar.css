@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: rgba(100, 136, 15, 1);
+  background: #9d372a;
   margin-top: 0;
   font-family: "Big Shoulders Stencil Display", cursive;
   font-size: 26px;
@@ -59,16 +59,52 @@ body {
   color: yellow;
 }
 
+.fa-bars,
+.fa-times {
+  border-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  outline: none;
+  font-size: 30px;
+  border-radius: 30px;
+  margin: 10px;
+  padding: 10px;
+  transition: 1s ease-out;
+  display: none;
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+}
+
+.fa-bars:hover,
+.fa-times:hover {
+  color: rgb(50, 50, 50);
+  font-size: 35px;
+}
+
+.fa-bars:active,
+.fa-times:active {
+  transition: none;
+}
+
 @media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: 45px;
-    right: 100px;
-    background: rgb(145, 2, 2);
-    width: 100px;
-    height: 100%;
-    justify-content: space-around;
-    flex-direction: column;
+  .navigationBarLinks {
+    display: none;
+  }
+
+  .navigationBarLogo {
+    display: flex;
     align-items: center;
+    text-align: center;
+    justify-content: space-around;
+  }
+
+  .fa-bars,
+  .fa-times {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
   }
 }

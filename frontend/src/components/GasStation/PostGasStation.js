@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
 import './PostGasStation.css';
+import RefreshToken from '../Token/RefreshToken';
 
 const cookies = new Cookies();
 const config = {
@@ -50,6 +51,7 @@ class PostGasStation extends React.Component {
     }
 
     postGasStation() {
+        config.headers.Authorization = 'Bearer ' + cookies.get('accessToken');
             Axios.post(`https://localhost:5001/GasStations`, this.state, config).then(res => {
             console.log(res.data);
             });
@@ -64,6 +66,7 @@ class PostGasStation extends React.Component {
 
     render() {
         return (
+            RefreshToken(),
             <div className='postGasStationOutterDiv'>
                 <div className='postGasStationInnerDiv'>
                     <div className='postGasStationTitleDiv'>

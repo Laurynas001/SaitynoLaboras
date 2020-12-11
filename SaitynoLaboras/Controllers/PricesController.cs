@@ -28,7 +28,7 @@ namespace SaitynoLaboras.Controllers
 
         [Authorize(Policy = Policies.Admin)]
         [HttpPost("{GSid}/Prices")]
-        public ActionResult<PriceCreateDTO> PostPrice(int GSid, PriceCreateDTO price)
+        public ActionResult<PriceReadDTO> PostPrice(int GSid, PriceCreateDTO price)
         {
             var priceModel = _mapper.Map<Price>(price);
             try
